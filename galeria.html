@@ -1,0 +1,2953 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/logoHabitekSF.png" type="image/png">
+    <title>Habitek Studio | Fabricación de Muebles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&amp;display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Million Dreams';
+            src: url('https://fonts.cdnfonts.com/css/million-dreams') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .font-dreams {
+            font-family: 'Million Dreams', sans-serif;
+        }
+
+        .hero-section {
+            background-image: linear-gradient(rgba(11, 11, 9, 0.5), rgba(11, 11, 9, 0.5)), url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 90vh;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: #856146;
+            color: #F7F5F2;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #222222;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #856146;
+            color: #333333;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #c4a080;
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #856146;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .filter-btn.active {
+            background-color: #856146;
+            color: #F7F5F2;
+        }
+
+
+        .contact-input:focus {
+            outline: none;
+            border-color: #856146;
+        }
+    </style>
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-float:active {
+            transform: scale(0.95);
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #075e54;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            right: 75px;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 30px;
+                right: 20px;
+            }
+
+            .whatsapp-tooltip {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+    <style>
+        *,
+        ::before,
+        ::after {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style:
+        }
+
+        ::backdrop {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style:
+        }
+
+        /* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+            border-color: #e5e7eb
+        }
+
+        ::after,
+        ::before {
+            --tw-content: ''
+        }
+
+        :host,
+        html {
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            -moz-tab-size: 4;
+            tab-size: 4;
+            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        body {
+            margin: 0;
+            line-height: inherit
+        }
+
+        hr {
+            height: 0;
+            color: inherit;
+            border-top-width: 1px
+        }
+
+        abbr:where([title]) {
+            -webkit-text-decoration: underline dotted;
+            text-decoration: underline dotted
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: inherit;
+            font-weight: inherit
+        }
+
+        a {
+            color: inherit;
+            text-decoration: inherit
+        }
+
+        b,
+        strong {
+            font-weight: bolder
+        }
+
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            font-size: 1em
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline
+        }
+
+        sub {
+            bottom: -.25em
+        }
+
+        sup {
+            top: -.5em
+        }
+
+        table {
+            text-indent: 0;
+            border-color: inherit;
+            border-collapse: collapse
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            font-family: inherit;
+            font-feature-settings: inherit;
+            font-variation-settings: inherit;
+            font-size: 100%;
+            font-weight: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+            color: inherit;
+            margin: 0;
+            padding: 0
+        }
+
+        button,
+        select {
+            text-transform: none
+        }
+
+        button,
+        input:where([type=button]),
+        input:where([type=reset]),
+        input:where([type=submit]) {
+            -webkit-appearance: button;
+            background-color: transparent;
+            background-image: none
+        }
+
+        :-moz-focusring {
+            outline: auto
+        }
+
+        :-moz-ui-invalid {
+            box-shadow: none
+        }
+
+        progress {
+            vertical-align: baseline
+        }
+
+        ::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+            height: auto
+        }
+
+        [type=search] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px
+        }
+
+        ::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit
+        }
+
+        summary {
+            display: list-item
+        }
+
+        blockquote,
+        dd,
+        dl,
+        figure,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        hr,
+        p,
+        pre {
+            margin: 0
+        }
+
+        fieldset {
+            margin: 0;
+            padding: 0
+        }
+
+        legend {
+            padding: 0
+        }
+
+        menu,
+        ol,
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        dialog {
+            padding: 0
+        }
+
+        textarea {
+            resize: vertical
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            opacity: 1;
+            color: #9ca3af
+        }
+
+        [role=button],
+        button {
+            cursor: pointer
+        }
+
+        :disabled {
+            cursor: default
+        }
+
+        audio,
+        canvas,
+        embed,
+        iframe,
+        img,
+        object,
+        svg,
+        video {
+            display: block;
+            vertical-align: middle
+        }
+
+        img,
+        video {
+            max-width: 100%;
+            height: auto
+        }
+
+        [hidden]:where(:not([hidden=until-found])) {
+            display: none
+        }
+
+        .container {
+            width: 100%
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px
+            }
+        }
+
+        @media (min-width: 1536px) {
+            .container {
+                max-width: 1536px
+            }
+        }
+
+        .sticky {
+            position: sticky
+        }
+
+        .top-0 {
+            top: 0px
+        }
+
+        .z-50 {
+            z-index: 50
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .mb-12 {
+            margin-bottom: 3rem
+        }
+
+        .mb-16 {
+            margin-bottom: 4rem
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem
+        }
+
+        .mb-3 {
+            margin-bottom: 0.75rem
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem
+        }
+
+        .ml-2 {
+            margin-left: 0.5rem
+        }
+
+        .ml-4 {
+            margin-left: 1rem
+        }
+
+        .mr-2 {
+            margin-right: 0.5rem
+        }
+
+        .mr-3 {
+            margin-right: 0.75rem
+        }
+
+        .mt-1 {
+            margin-top: 0.25rem
+        }
+
+        .mt-12 {
+            margin-top: 3rem
+        }
+
+        .mt-4 {
+            margin-top: 1rem
+        }
+
+        .block {
+            display: block
+        }
+
+        .inline-block {
+            display: inline-block
+        }
+
+        .flex {
+            display: flex
+        }
+
+        .inline-flex {
+            display: inline-flex
+        }
+
+        .grid {
+            display: grid
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .h-1 {
+            height: 0.25rem
+        }
+
+        .h-48 {
+            height: 12rem
+        }
+
+        .h-6 {
+            height: 1.5rem
+        }
+
+        .h-64 {
+            height: 16rem
+        }
+
+        .h-auto {
+            height: auto
+        }
+
+        .w-20 {
+            width: 5rem
+        }
+
+        .w-24 {
+            width: 6rem
+        }
+
+        .w-6 {
+            width: 1.5rem
+        }
+
+        .w-full {
+            width: 100%
+        }
+
+        .max-w-2xl {
+            max-width: 42rem
+        }
+
+        .max-w-4xl {
+            max-width: 56rem
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr))
+        }
+
+        .flex-col {
+            flex-direction: column
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap
+        }
+
+        .items-start {
+            align-items: flex-start
+        }
+
+        .items-center {
+            align-items: center
+        }
+
+        .justify-center {
+            justify-content: center
+        }
+
+        .justify-between {
+            justify-content: space-between
+        }
+
+        .gap-10 {
+            gap: 2.5rem
+        }
+
+        .gap-12 {
+            gap: 3rem
+        }
+
+        .gap-3 {
+            gap: 0.75rem
+        }
+
+        .gap-4 {
+            gap: 1rem
+        }
+
+        .gap-6 {
+            gap: 1.5rem
+        }
+
+        .gap-8 {
+            gap: 2rem
+        }
+
+        .space-x-2> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+            margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-x-4> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(1rem * var(--tw-space-x-reverse));
+            margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-x-6> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+            margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-x-8> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(2rem * var(--tw-space-x-reverse));
+            margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-y-2> :not([hidden])~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
+        }
+
+        .overflow-hidden {
+            overflow: hidden
+        }
+
+        .rounded-full {
+            border-radius: 9999px
+        }
+
+        .rounded-lg {
+            border-radius: 0.5rem
+        }
+
+        .border {
+            border-width: 1px
+        }
+
+        .border-t {
+            border-top-width: 1px
+        }
+
+        .border-\[\#333333\] {
+            --tw-border-opacity: 1;
+            border-color: rgb(10 11 10 / var(--tw-border-opacity, 1))
+        }
+
+        .border-\[\#856146\] {
+            --tw-border-opacity: 1;
+            border-color: rgb(66 47 36 / var(--tw-border-opacity, 1))
+        }
+
+        .border-\[\#856146\] {
+            --tw-border-opacity: 1;
+            border-color: rgb(66 47 36 / var(--tw-border-opacity, 1))
+        }
+
+        .border-\[\#856146\] {
+            --tw-border-opacity: 1;
+            border-color: rgb(216 181 149 / var(--tw-border-opacity, 1))
+        }
+
+        .border-gray-300 {
+            --tw-border-opacity: 1;
+            border-color: rgb(209 213 219 / var(--tw-border-opacity, 1))
+        }
+
+        .bg-\[\#F7F5F2\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(248 245 242 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#333333\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(11 11 9 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#333333\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(47 76 69 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#856146\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(66 47 36 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#856146\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(66 47 36 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#856146\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(216 181 151 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#856146\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(216 181 149 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-white {
+            --tw-bg-opacity: 1;
+            background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+        }
+
+        .object-cover {
+            object-fit: cover
+        }
+
+        .p-4 {
+            padding: 1rem
+        }
+
+        .p-6 {
+            padding: 1.5rem
+        }
+
+        .p-8 {
+            padding: 2rem
+        }
+
+        .px-12 {
+            padding-left: 3rem;
+            padding-right: 3rem
+        }
+
+        .px-3 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem
+        }
+
+        .px-8 {
+            padding-left: 2rem;
+            padding-right: 2rem
+        }
+
+        .py-12 {
+            padding-top: 3rem;
+            padding-bottom: 3rem
+        }
+
+        .py-16 {
+            padding-top: 4rem;
+            padding-bottom: 4rem
+        }
+
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem
+        }
+
+        .py-20 {
+            padding-top: 5rem;
+            padding-bottom: 5rem
+        }
+
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem
+        }
+
+        .pb-4 {
+            padding-bottom: 1rem
+        }
+
+        .pt-8 {
+            padding-top: 2rem
+        }
+
+        .text-center {
+            text-align: center
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+            line-height: 2rem
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+            line-height: 2.5rem
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem
+        }
+
+        .font-bold {
+            font-weight: 700
+        }
+
+        .font-medium {
+            font-weight: 500
+        }
+
+        .font-semibold {
+            font-weight: 600
+        }
+
+        .text-\[\#333333\] {
+            --tw-text-opacity: 1;
+            color: rgb(11 11 9 / var(--tw-text-opacity, 1))
+        }
+
+        .text-\[\#333333\] {
+            --tw-text-opacity: 1;
+            color: rgb(10 11 10 / var(--tw-text-opacity, 1))
+        }
+
+        .text-\[\#333333\] {
+            --tw-text-opacity: 1;
+            color: rgb(47 76 69 / var(--tw-text-opacity, 1))
+        }
+
+        .text-\[\#856146\] {
+            --tw-text-opacity: 1;
+            color: rgb(66 47 36 / var(--tw-text-opacity, 1))
+        }
+
+        .text-\[\#856146\] {
+            --tw-text-opacity: 1;
+            color: rgb(216 181 151 / var(--tw-text-opacity, 1))
+        }
+
+        .text-\[\#F7F5F2\] {
+            --tw-text-opacity: 1;
+            color: rgb(248 245 242 / var(--tw-text-opacity, 1))
+        }
+
+        .text-\[\#856146\] {
+            --tw-text-opacity: 1;
+            color: rgb(216 181 149 / var(--tw-text-opacity, 1))
+        }
+
+        .text-gray-700 {
+            --tw-text-opacity: 1;
+            color: rgb(55 65 81 / var(--tw-text-opacity, 1))
+        }
+
+        .shadow-lg {
+            --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-md {
+            --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-sm {
+            --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-xl {
+            --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .transition {
+            transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms
+        }
+
+        .duration-300 {
+            transition-duration: 300ms
+        }
+
+        .hover\:bg-\[\#333333\]:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(47 76 69 / var(--tw-bg-opacity, 1))
+        }
+
+        .hover\:bg-\[\#F7F5F2\]:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(248 245 242 / var(--tw-bg-opacity, 1))
+        }
+
+        .hover\:text-\[\#222222\]:hover {
+            --tw-text-opacity: 1;
+            color: rgb(30 54 48 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-\[\#333333\]:hover {
+            --tw-text-opacity: 1;
+            color: rgb(47 76 69 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-\[\#856146\]:hover {
+            --tw-text-opacity: 1;
+            color: rgb(216 181 151 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-\[\#F7F5F2\]:hover {
+            --tw-text-opacity: 1;
+            color: rgb(248 245 242 / var(--tw-text-opacity, 1))
+        }
+
+        .focus\:border-\[\#856146\]:focus {
+            --tw-border-opacity: 1;
+            border-color: rgb(66 47 36 / var(--tw-border-opacity, 1))
+        }
+
+        .focus\:outline-none:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px
+        }
+
+        @media (min-width: 640px) {
+            .sm\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+        }
+
+        @media (min-width: 768px) {
+            .md\:col-span-2 {
+                grid-column: span 2 / span 2
+            }
+
+            .md\:mb-0 {
+                margin-bottom: 0px
+            }
+
+            .md\:flex {
+                display: flex
+            }
+
+            .md\:hidden {
+                display: none
+            }
+
+            .md\:w-1\/2 {
+                width: 50%
+            }
+
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .md\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+            }
+
+            .md\:grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr))
+            }
+
+            .md\:flex-row {
+                flex-direction: row
+            }
+
+            .md\:py-24 {
+                padding-top: 6rem;
+                padding-bottom: 6rem
+            }
+
+            .md\:text-2xl {
+                font-size: 1.5rem;
+                line-height: 2rem
+            }
+
+            .md\:text-3xl {
+                font-size: 1.875rem;
+                line-height: 2.25rem
+            }
+
+            .md\:text-4xl {
+                font-size: 2.25rem;
+                line-height: 2.5rem
+            }
+
+            .md\:text-6xl {
+                font-size: 3.75rem;
+                line-height: 1
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+            }
+
+            .lg\:text-7xl {
+                font-size: 4.5rem;
+                line-height: 1
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#F7F5F2] text-[#333333]">
+
+
+
+    <!-- Barra de navegación -->
+    <nav class="bg-[#333333] text-[#F7F5F2] sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between relative">
+
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="img/logoHabitekSF.png" class="h-10" alt="Habitek Studio">
+                    <h1 class="text-2xl md:text-3xl">Habitek Studio</h1>
+                </div>
+
+                <!-- MENÚ DESKTOP CENTRADO -->
+                <div class="hidden md:flex items-center space-x-8 
+                        absolute left-1/2 transform -translate-x-1/2">
+
+                    <a href="index.html#inicio" class="nav-link hover:text-[#856146] transition duration-300">Inicio</a>
+
+                    <!-- DROPDOWN -->
+                    <div class="relative">
+                        <button id="dropdownButton"
+                            class=" flex items-center nav-link hover:text-[#856146] transition duration-300">
+                            Información
+                            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+
+                        <!-- MENU -->
+                        <div id="dropdownMenu" class="absolute left-0 top-full mt-1 w-56 bg-[#F7F5F2] text-[#333333] rounded-lg shadow-lg
+                               opacity-0 scale-95 invisible
+                               transition-all duration-200 ease-in-out">
+
+                            <a href="index.html#nosotros"
+                                class="block px-4 py-2 hover:bg-[#856146] hover:text-white transition">
+                                ¿Quiénes somos?
+                            </a>
+
+                            <a href="index.html#servicios"
+                                class="block px-4 py-2 hover:bg-[#856146] hover:text-white transition">
+                                ¿Cómo envían mi pedido?
+                            </a>
+
+                            <a href="index.html#pagos"
+                                class="block px-4 py-2 hover:bg-[#856146] hover:text-white transition">
+                                ¿Cómo pagar?
+                            </a>
+
+                            <a href="index.html#devolucion"
+                                class="block px-4 py-2 hover:bg-[#856146] hover:text-white transition">
+                                Devoluciones
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="index.html#contacto"
+                        class="nav-link hover:text-[#856146] transition duration-300">Contacto</a>
+                </div>
+
+                <!-- DERECHA: CARRITO + MOBILE -->
+                <div class="flex items-center space-x-4">
+
+                    <!-- CARRITO -->
+                    <div class="relative cursor-pointer" id="cartBtn">
+                        <i class="fas fa-shopping-cart text-xl hover:text-[#856146] transition"></i>
+
+                        <!-- Badge -->
+                        <span id="cartCount"
+                            class="absolute -top-2 -right-2 bg-[#AB0521] text-white text-xs px-2 py-0.5 rounded-full">
+                            0
+                        </span>
+                    </div>
+
+                    <!-- BOTÓN MOBILE -->
+                    <button id="mobileMenuBtn" class="md:hidden">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- MENÚ MOBILE -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 transition-all duration-300">
+
+                <a href="index.html#inicio" class="block py-2 hover:text-[#AB0521]">Inicio</a>
+
+                <!-- DROPDOWN MOBILE -->
+                <button id="mobileDropdownBtn"
+                    class="w-full text-left py-2 flex justify-between items-center hover:text-[#AB0521]">
+                    Información
+                    <span id="arrow">▼</span>
+                </button>
+
+                <div id="mobileDropdown" class="hidden pl-4 transition-all duration-300">
+
+                    <a href="index.html#nosotros" class="block py-2 hover:text-[#AB0521]">
+                        ¿Quiénes somos?
+                    </a>
+
+                    <a href="index.html#servicios" class="block py-2 hover:text-[#AB0521]">
+                        ¿Cómo envían mi pedido?
+                    </a>
+
+
+                    <a href="index.html#pagos" class="block py-2 hover:text-[#AB0521]">
+                        ¿Cómo pagar?
+                    </a>
+
+                    <a href="index.html#devolucion" class="block py-2 hover:text-[#AB0521]">
+                        Devoluciones
+                    </a>
+                </div>
+
+                <a href="index.html#contacto" class="block py-2 hover:text-[#AB0521]">Contacto</a>
+            </div>
+        </div>
+    </nav>
+    <!-- PANEL CARRITO -->
+    <div id="cartPanel"
+        class="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+
+        <div class="p-5 flex justify-between items-center border-b">
+            <h2 class="text-xl font-bold text-[#333333]">Carrito</h2>
+            <button id="closeCart" class="text-xl">✕</button>
+        </div>
+
+        <!-- Productos -->
+        <div id="cartItems" class="p-4 space-y-3 overflow-y-auto h-[60%]">
+            <p class="text-gray-500">Tu carrito está vacío</p>
+        </div>
+
+        <!-- Total -->
+        <div class="p-4 border-t">
+            <div class="flex justify-between mb-3">
+                <span class="font-bold">Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+
+            <button onclick="finalizarCompra()" class="w-full bg-[#856146] text-white py-2 rounded mb-2">
+                Ir a pagar
+            </button>
+
+            <button onclick="clearCart()" class="w-full border border-gray-400 py-2 rounded">
+                Vaciar carrito
+            </button>
+        </div>
+    </div>
+
+    <!-- Galería -->
+    <section id="galeria" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-[#333333] mb-4">Nuestros Productos</h2>
+                <p class="text-lg text-[#0A0B0A] max-w-2xl mx-auto mb-6">Explora nuestra amplia gama de muebles en
+                    melamina para todos los espacios de tu hogar u oficina.</p>
+                <div class="w-20 h-1 bg-[#d8b595] mx-auto"></div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+
+                <button
+                    class="filter-btn px-4 py-2 rounded-full border border-[#333333] text-[#0A0B0A] hover:bg-[#856146] hover:text-[#F8F5F2] transition active"
+                    data-filter="all">Todos</button>
+
+                <button
+                    class="filter-btn px-4 py-2 rounded-full border border-[#333333] text-[#0A0B0A] hover:bg-[#856146] hover:text-[#F8F5F2] transition"
+                    data-filter="cocinas">Cocinas</button>
+                <button
+                    class="filter-btn px-4 py-2 rounded-full border border-[#333333] text-[#0A0B0A] hover:bg-[#856146] hover:text-[#F8F5F2] transition"
+                    data-filter="closets">Closets</button>
+                <button
+                    class="filter-btn px-4 py-2 rounded-full border border-[#333333] text-[#0A0B0A] hover:bg-[#856146] hover:text-[#F8F5F2] transition"
+                    data-filter="oficina">Oficina</button>
+                <button
+                    class="filter-btn px-4 py-2 rounded-full border border-[#333333] text-[#0A0B0A] hover:bg-[#856146] hover:text-[#F8F5F2] transition"
+                    data-filter="modulares">Modulares</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Product 1 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="cocinas"
+                    style="opacity: 1; transform: translateY(0px); display: block;">
+
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=cocinaIntegralA">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/cocinaIntegralA1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/cocinaIntegralA2.webp">
+
+                        </a>
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Cocina Integral Nova</h3>
+
+                        <p class="text-[#0A0B0A] mb-4">
+                            Diseño contemporáneo con acabados en melamina de alta resistencia
+                            y durabilidad.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 3m x 2m</span>
+                            <span class="text-[#2F4C45] font-bold">$1,200,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Cocina Integral Nova', 1200000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="closets"
+                    style="opacity: 1; transform: translateY(0px); display: block;">
+
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=ClosetWalkIn">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/closetA1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/closetA2.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Closet Walk-In</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Sistema modular con divisiones inteligentes para optimizar el espacio de tu vestidor.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 2.5m x 1.8m</span>
+                            <span class="text-[#2F4C45] font-bold">$850,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Closet Walk-In', 850000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="oficina"
+                    style="opacity: 1; transform: translateY(0px); display: block;">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=escritorioAura">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/escritorioA1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/escritorioA2.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Escritorio Ejecutivo Aura</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Diseño ergonómico con espacios para computador, impresora y archivo de documentos.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 1.6m x 0.8m</span>
+                            <span class="text-[#2F4C45] font-bold">$550,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Escritorio Ejecutivo Aura', 550000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modulares"
+                    style="display: block; opacity: 1; transform: translateY(0px);">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=mesaNocheEbano">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/mesaN_A1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/mesaN_A2.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Mesa de noche Ébano</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Sistema de módulos para crear el mueble perfecto para
+                            tu espacio.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Módulo base: 0.8m x 0.4m</span>
+                            <span class="text-[#2F4C45] font-bold">$280,000 c/u</span>
+                        </div>
+
+                        <button onclick="addToCart('Mesa de noche Ébano', 280000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="oficina"
+                    style="display: block; opacity: 1; transform: translateY(0px);">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=escritorioAltis">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/escritorioB1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/escritorioB2.webp">
+                        </a>
+
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Escritorio Personal Altis</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Diseño ergonómico con espacios para computador e impresora.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 1.6m x 0.8m</span>
+                            <span class="text-[#2F4C45] font-bold">$350,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Escritorio Personal Altis', 350000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="closets"
+                    style="display: block; opacity: 1; transform: translateY(0px);">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=closetVetra">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/closetB1.webp">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/closetB2.webp">
+                        </a>
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Closet Corredizo Vetra</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Puertas corredizas que ahorran espacio, con interiores
+                            organizados y prácticos.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 2m x 1.6m</span>
+                            <span class="text-[#2F4C45] font-bold">$550,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Closet Corredizo Vetra', 550000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!--------------------------------------------------------------------------------->
+                <!-- Product 7 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="cocinas"
+                    style="opacity: 1; transform: translateY(0px); display: block;">
+
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=cocinaLumina">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/cocinaIntegralB1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/CocinaIntegralB2.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Cocina Moderna Lúmina</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Diseño contemporáneo con acabados en melamina de alta resistencia
+                            y durabilidad.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 3m x 2m</span>
+                            <span class="text-[#2F4C45] font-bold">$1,200,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Cocina Moderna Lúmina', 1200000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modular"
+                    style="opacity: 1; transform: translateY(0px); display: block;">
+
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=lavamanosOnix">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/MuebleLavamanosC1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebleLavamanosC2.webp">
+
+                        </a>
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Mueble Lavamanos Onix</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Sistema modular con divisiones inteligentes para optimizar el espacio de tu baño.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 2.5m x 1.8m</span>
+                            <span class="text-[#2F4C45] font-bold">$850,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Mueble Lavamanos Onix', 850000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="closet"
+                    style="opacity: 1; transform: translateY(0px); display: block;">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=closetPrisma">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/closetC1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/closetC2.webp">
+
+                        </a>
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Closet Prisma</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Diseño ergonómico con espacios para zapatero, cajones y ropero.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 1.6m x 0.8m</span>
+                            <span class="text-[#2F4C45] font-bold">$550,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Closet Prisma', 750000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+                <!-- Product # -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modulares"
+                    style="display: block; opacity: 1; transform: translateY(0px);">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=mesaNocheZenit">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/mesaN_A1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/mesaN_A2.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Mesa de noche Zenit</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Sistema de módulos para crear el mueble perfecto para
+                            tu espacio.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Módulo base: 0.8m x 0.4m</span>
+                            <span class="text-[#2F4C45] font-bold">$280,000 c/u</span>
+                        </div>
+
+                        <button onclick="addToCart('Mesa de noche Zenit', 280000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+                <!-- Product 10 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="closet"
+                    style="display: block; opacity: 1; transform: translateY(0px);">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=closetAureo">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/closetD1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/closetD2.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Closet Aureo</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Sistema de módulos para crear el mueble perfecto para
+                            tu espacio.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Módulo base: 0.8m x 0.4m</span>
+                            <span class="text-[#2F4C45] font-bold">$980,000 c/u</span>
+                        </div>
+
+                        <button onclick="addToCart('Closet Aureo', 980000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 11 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="cocinas"
+                    style="display: block; opacity: 1; transform: translateY(0px);">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=cocinaVelaris">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/cocinaIntegralC1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/cocinaIntegralC2.webp">
+                        </a>
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Cocina Integral Velaris</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Diseño novedoso con espacios para todos los accesorios.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 1.6m x 0.8m</span>
+                            <span class="text-[#2F4C45] font-bold">$1.250,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Cocina Integral Velaris', 1250000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 12 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="oficina"
+                    style="display: block; opacity: 1; transform: translateY(0px);">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=escritorioCalix">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/escritorioC1.webp">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/escritorioC2.webp">
+                        </a>
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Escritorio Gamer Calix</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Diseño ergonómico y adecuado para uso gamer.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 2m x 1.6m</span>
+                            <span class="text-[#2F4C45] font-bold">$750,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Escritorio Gamer Calix', 750000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+                <!-------------------------------------------------------------------------------->
+
+                <!-- Product # -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="closets"
+                    style="opacity: 1; transform: translateY(0px); display: block;">
+
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=closetEterna">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/closetA1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/closetA2.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Closet Eterna</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Sistema modular con divisiones inteligentes para optimizar el espacio de tu vestidor.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 2.5m x 1.8m</span>
+                            <span class="text-[#2F4C45] font-bold">$850,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Closet Eterna', 850000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+                <!-- Product 13 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modulares"
+                    style="opacity: 1; transform: translateY(0px); display: block;">
+
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=mesaNocheArlet">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/mesaN_B1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/mesaN_B2.webp">
+                        </a>
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Mesa de Noche Arlet</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Diseño contemporáneo con acabados en melamina de alta resistencia
+                            y durabilidad.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 3m x 2m</span>
+                            <span class="text-[#2F4C45] font-bold">$300,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Mesa de Noche Arlet', 300000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 14 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modulares"
+                    style="opacity: 1; transform: translateY(0px); display: block;">
+
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=mesaNocheZafiro">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/mesaN_C1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/mesaN_C2.webp">
+                        </a>
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Mesa de Noche Zafiro</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Sistema modular con divisiones inteligentes para optimizar el espacio de tu habitación.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 0.5m x 0.8m</span>
+                            <span class="text-[#2F4C45] font-bold">$350,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Mesa de Noche Zafiro', 350000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 15 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modulares"
+                    style="opacity: 1; transform: translateY(0px); display: block;">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=lavamanosKael">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebleLavaManosA1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebleLavaManosA2.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Mueble Lavamanos Kael</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Diseño premium con espacios para secador y jabonera.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 0.6m x 0.8m</span>
+                            <span class="text-[#2F4C45] font-bold">$650,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Mueble Lavamanos Kael', 650000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 16 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modulares"
+                    style="display: block; opacity: 1; transform: translateY(0px);">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=lavamanosVion">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebleLavamanosB1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebleLavamanosB2.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Mueble Lavamanos Vion</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Sistema de módulos para crear el mueble perfecto para
+                            tu espacio.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Módulo base: 0.8m x 0.4m</span>
+                            <span class="text-[#2F4C45] font-bold">$280,000 c/u</span>
+                        </div>
+
+                        <button onclick="addToCart('Mueble Lavamanos Vion', 280000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 17 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modulares"
+                    style="display: block; opacity: 1; transform: translateY(0px);">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+                        <a href="producto.html?id=entretenimientoNarel">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebletvA1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebletvA1.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Centro Entretenimiento Narel
+                        </h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Diseño ELEGANTE con espacios para consolas y almacenamiento.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 1.6m x 0.8m</span>
+                            <span class="text-[#2F4C45] font-bold">$950,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Centro Entretenimiento Narel', 950000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 18 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modulares"
+                    style="display: block; opacity: 1; transform: translateY(0px);">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=entretenimientoIsen">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebletvB2.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebletvB1.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Centro Entretenimiento Isen
+                        </h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Centro Entretenimiento familiar con cajones.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 2m x 1.6m</span>
+                            <span class="text-[#2F4C45] font-bold">$850,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Centro Entretenimiento Isen', 850000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+                <!----------------------------------------------------------------------------->
+
+                <!-- Product 19 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modulares"
+                    style="opacity: 1; transform: translateY(0px); display: block;">
+
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=entretenimientoKaia">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebletvC1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebletvC2.webp">
+
+                        </a>
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Centro Entretenimiento Kaia
+                        </h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Diseño contemporáneo con acabados en melamina de alta resistencia
+                            y durabilidad.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 3m x 2m</span>
+                            <span class="text-[#2F4C45] font-bold">$850,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Centro Entretenimiento Kaia', 850000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 20 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modulares
+                    style=" opacity: 1; transform: translateY(0px); display: block;">
+
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=entretenimientoUmbra">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebletvD1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebletvD2.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Centro Entretenimiento Umbra
+                        </h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Sistema modular con divisiones inteligentes para optimizar el espacio de tu hogar.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 2.5m x 1.8m</span>
+                            <span class="text-[#2F4C45] font-bold">$850,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Centro Entretenimiento Umbra', 850000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 21 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modulares"
+                    style="opacity: 1; transform: translateY(0px); display: block;">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=entretenimientoNero">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebletvE1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebletvE2.webp">
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Centro Entretenimiento Nero
+                        </h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Sistema modular con divisiones inteligentes para optimizar el espacio de tu hogar.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 3m x 2m</span>
+                            <span class="text-[#2F4C45] font-bold">$850,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Centro Entretenimiento Nero', 850000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 22 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="modulares"
+                    style="display: block; opacity: 1; transform: translateY(0px);">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=entretenimientoTitan">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebletvF1.webp">
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/muebletvF2.webp">
+
+                        </a>
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Centro de Entretenimiento Titan
+                        </h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Sistema de módulos para crear el mueble perfecto para
+                            tu espacio.
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Módulo base: 3m x 2m</span>
+                            <span class="text-[#2F4C45] font-bold">$1,280,000 c/u</span>
+                        </div>
+
+                        <button onclick="addToCart('Centro de Entretenimiento Titan', 1280000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 23 -->
+                <div class="product-card bg-[#F8F5F2] rounded-lg overflow-hidden" data-category="oficina"
+                    style="display: block; opacity: 1; transform: translateY(0px);">
+                    <!-- 🔥 Slider -->
+                    <div class="relative w-full h-64 overflow-hidden">
+
+                        <a href="producto.html?id=tocadorEclipse">
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/tocadorA2.webp">
+
+
+                            <img class="slide w-full h-full object-cove"
+                                src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/tocadorA1.webp">
+
+                        </a>
+
+
+                        <!-- Botones -->
+                        <button onclick="prevSlide(this)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❮
+                        </button>
+
+                        <button onclick="nextSlide(this)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded">
+                            ❯
+                        </button>
+                    </div>
+
+                    <!-- --------------- -->
+                    <div class="p-6">
+                        <h3 class="title-font text-xl font-semibold text-[#2F4C45] mb-2">Tocador Eclipse</h3>
+                        <p class="text-[#0A0B0A] mb-4">
+                            Diseño ergonómico con espacios para computadore impresora .
+                        </p>
+
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[#0A0B0A] font-medium">Medidas: 2.6m x 0.8m</span>
+                            <span class="text-[#2F4C45] font-bold">$850,000</span>
+                        </div>
+
+                        <button onclick="addToCart('Tocador Eclipse', 850000)"
+                            class="btn-primary w-full text-center block py-2 rounded-lg">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-dreams text-3xl md:text-4xl mb-4">Contacto</h2>
+
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="container mx-auto px-4">
+                    <div class="max-w-4xl mx-auto bg-[#F8F5F2] rounded-lg shadow-lg overflow-hidden">
+                        <div class="md:flex">
+                            <div class="md:w-1/2 bg-[#333333] text-[#F8F5F2] p-8 flex flex-col justify-center">
+                                <h2 class="title-font text-3xl font-bold mb-6">Solicita tu Cotización</h2>
+                                <p class="mb-6">Completa el formulario y nos pondremos en contacto contigo para
+                                    ofrecerte la
+                                    mejor solución en muebles de melamina.</p>
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-[#d8b595] mt-1 mr-3"></i>
+                                        <p>Respuesta en menos de 24 horas</p>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-[#d8b595] mt-1 mr-3"></i>
+                                        <p>Asesoría personalizada sin costo</p>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-[#d8b595] mt-1 mr-3"></i>
+                                        <p>Presupuesto detallado y transparente</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="md:w-1/2 p-8">
+                                <form id="quote-form" class="space-y-4">
+                                    <div>
+                                        <label for="quote-name" class="block text-[#333333] mb-1">Nombre
+                                            completo*</label>
+                                        <input type="text" id="quote-name" name="name" required
+                                            class="w-full px-4 py-2 rounded-lg focus:outline-none">
+                                    </div>
+
+                                    <div>
+                                        <label for="quote-email" class="block text-[#333333] mb-1">Correo
+                                            electrónico*</label>
+                                        <input type="email" id="quote-email" name="email" required
+                                            class="w-full px-4 py-2 rounded-lg focus:outline-none">
+                                    </div>
+
+                                    <div>
+                                        <label for="quote-phone" class="block text-[#333333] mb-1">Teléfono*</label>
+                                        <input type="tel" id="quote-phone" name="phone" required
+                                            class="w-full px-4 py-2 rounded-lg focus:outline-none">
+                                    </div>
+
+                                    <div>
+                                        <label for="quote-type" class="block text-[#333333] mb-1">Tipo de
+                                            mueble*</label>
+                                        <select id="quote-type" name="type" required
+                                            class="w-full px-4 py-2 rounded-lg focus:outline-none">
+                                            <option value="">Selecciona una opción</option>
+                                            <option value="cocina">Cocina</option>
+                                            <option value="closet">Closet</option>
+                                            <option value="oficina">Oficina</option>
+                                            <option value="modular">Mueble modular</option>
+                                            <option value="otro">Otro</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="quote-dimensions" class="block text-[#333333] mb-1">Dimensiones
+                                            aproximadas</label>
+                                        <input type="text" id="quote-dimensions" name="dimensions"
+                                            placeholder="Ej: 2m x 1.5m"
+                                            class="w-full px-4 py-2 rounded-lg focus:outline-none">
+                                    </div>
+
+                                    <div>
+                                        <label for="quote-description" class="block text-[#333333] mb-1">Descripción del
+                                            proyecto*</label>
+                                        <textarea id="quote-description" name="description" rows="3" required
+                                            class="w-full px-4 py-2 rounded-lg focus:outline-none"></textarea>
+                                    </div>
+
+                                    <button type="submit"
+                                        class="btn-primary w-full py-3 rounded-lg font-medium mt-4">Enviar
+                                        Solicitud</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="bg-[#333333] text-[#F7F5F2] py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div>
+                    <img src="img/logoHabitekSF1.png" alt="Habitek Studio">
+
+                    <p class="text-[#856146]">Ebanistería artesanal de alta calidad</p>
+                </div>
+
+                <div>
+                    <h4 class="font-medium text-lg mb-4">Contacto</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-[#856146]"></i>
+                            <span>CaLLE 19A # 16A - 32 Chiquinquirá</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-[#856146]"></i>
+                            <span>+57 311 512 0652</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-[#856146]"></i>
+                            <span>habitekstudio@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-medium text-lg mb-4">Horario</h4>
+                    <ul class="space-y-2">
+                        <li>Lunes a Viernes: 9:00 - 18:00</li>
+                        <li>Sábados: 10:00 - 14:00</li>
+                        <li>Domingos: Cerrado</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-medium text-lg mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/habitekstudio?igsh=YTBwYTlxczRldmN0" target="_blank"
+                            class="text-2xl text-[#856146] hover:text-[#F7F5F2] transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/share/1CVenc9XGB/" target="_blank"
+                            class="text-2xl text-[#856146] hover:text-[#F7F5F2] transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                        <!-- Pinterest -->
+                        <a href="https://pin.it/3EpWjFEoC" target="_blank"
+                            class="text-2xl text-[#856146] hover:text-[#F7F5F2] transition duration-300">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-[#856146] mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-[#856146] text-sm">© 2025 Habitek Studio. Todos los derechos reservados.</p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="#" class="text-sm hover:text-[#856146] transition duration-300">Política de privacidad</a>
+                    <a href="#" class="text-sm hover:text-[#856146] transition duration-300">Términos y condiciones</a>
+                    <a href="#" class="text-sm hover:text-[#856146] transition duration-300">Aviso legal</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+        // =========================
+        // DROPDOWN DESKTOP (CLICK)
+        // =========================
+        const dropdownBtn = document.getElementById("dropdownButton");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+
+        dropdownBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle("opacity-0");
+            dropdownMenu.classList.toggle("invisible");
+            dropdownMenu.classList.toggle("scale-95");
+        });
+
+        // Cerrar al hacer click fuera
+        document.addEventListener("click", (e) => {
+            if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.add("opacity-0", "invisible", "scale-95");
+            }
+        });
+
+        // =========================
+        // MENÚ MOBILE
+        // =========================
+        const mobileBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        mobileBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        // =========================
+        // DROPDOWN MOBILE
+        // =========================
+        const mobileDropdownBtn = document.getElementById("mobileDropdownBtn");
+        const mobileDropdown = document.getElementById("mobileDropdown");
+        const arrow = document.getElementById("arrow");
+
+        mobileDropdownBtn.addEventListener("click", () => {
+            mobileDropdown.classList.toggle("hidden");
+
+            // Rotar flecha
+            arrow.classList.toggle("rotate-180");
+        });
+    </script>
+    <script>
+        // Menú móvil
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling para enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Cerrar menú móvil si está abierto
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+    <!-- Botón flotante de WhatsApp 
+    <a href="https://wa.me/+573203750427" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">¡Chatea con nosotros!</span>
+    </a>
+    -->
+
+    <!-- SCRIPT -->
+    <script>
+        // =========================
+        // DROPDOWN DESKTOP
+        // =========================
+        const dropdownBtn = document.getElementById("dropdownButton");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+
+        dropdownBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle("opacity-0");
+            dropdownMenu.classList.toggle("invisible");
+            dropdownMenu.classList.toggle("scale-95");
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.add("opacity-0", "invisible", "scale-95");
+            }
+        });
+
+        // =========================
+        // MENÚ MOBILE
+        // =========================
+        const mobileBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        mobileBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        // =========================
+        // DROPDOWN MOBILE
+        // =========================
+        const mobileDropdownBtn = document.getElementById("mobileDropdownBtn");
+        const mobileDropdown = document.getElementById("mobileDropdown");
+        const arrow = document.getElementById("arrow");
+
+        mobileDropdownBtn.addEventListener("click", () => {
+            mobileDropdown.classList.toggle("hidden");
+            arrow.classList.toggle("rotate-180");
+        });
+
+
+    </script>
+    <script src="carrito.js"></script>
+    <script>
+        // Product filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                productCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Initialize filter to show all products
+        document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+
+        // Scroll reveal animation
+        window.addEventListener('scroll', revealOnScroll);
+
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.product-card, .blog-card, .testimonial-card');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+    </script>
+    <!--
+    // =========================
+    // SLIDER IMG
+    // =========================  
+    -->
+    <script>
+        function nextSlide(btn) {
+            const container = btn.parentElement;
+            const slides = container.querySelectorAll(".slide");
+
+            let index = Array.from(slides).findIndex(s => !s.classList.contains("hidden"));
+
+            slides[index].classList.add("hidden");
+            index = (index + 1) % slides.length;
+            slides[index].classList.remove("hidden");
+        }
+
+        function prevSlide(btn) {
+            const container = btn.parentElement;
+            const slides = container.querySelectorAll(".slide");
+
+            let index = Array.from(slides).findIndex(s => !s.classList.contains("hidden"));
+
+            slides[index].classList.add("hidden");
+            index = (index - 1 + slides.length) % slides.length;
+            slides[index].classList.remove("hidden");
+        }
+    </script>
+
+
+
+</body>
+
+</html>

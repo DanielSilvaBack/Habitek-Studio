@@ -1,0 +1,1900 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitek Studio | Fabricación de Muebles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&amp;display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Million Dreams';
+            src: url('https://fonts.cdnfonts.com/css/million-dreams') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .font-dreams {
+            font-family: 'Million Dreams', sans-serif;
+        }
+
+        .hero-section {
+            background-image: linear-gradient(rgba(11, 11, 9, 0.5), rgba(11, 11, 9, 0.5)), url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 90vh;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: #AB0521;
+            background-color: #AB0521;
+            color: #F7F5F2;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #222222;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #856146;
+            color: #333333;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #c4a080;
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #856146;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .filter-btn.active {
+            background-color: #AB0521;
+            color: #F7F5F2;
+        }
+
+
+        .contact-input:focus {
+            outline: none;
+            border-color: #856146;
+        }
+    </style>
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-float:active {
+            transform: scale(0.95);
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #075e54;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            right: 75px;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 30px;
+                right: 20px;
+            }
+
+            .whatsapp-tooltip {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+    <style>
+        *,
+        ::before,
+        ::after {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style:
+        }
+
+        ::backdrop {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style:
+        }
+
+        /* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+            border-color: #e5e7eb
+        }
+
+        ::after,
+        ::before {
+            --tw-content: ''
+        }
+
+        :host,
+        html {
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            -moz-tab-size: 4;
+            tab-size: 4;
+            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        body {
+            margin: 0;
+            line-height: inherit
+        }
+
+        hr {
+            height: 0;
+            color: inherit;
+            border-top-width: 1px
+        }
+
+        abbr:where([title]) {
+            -webkit-text-decoration: underline dotted;
+            text-decoration: underline dotted
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: inherit;
+            font-weight: inherit
+        }
+
+        a {
+            color: inherit;
+            text-decoration: inherit
+        }
+
+        b,
+        strong {
+            font-weight: bolder
+        }
+
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            font-size: 1em
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline
+        }
+
+        sub {
+            bottom: -.25em
+        }
+
+        sup {
+            top: -.5em
+        }
+
+        table {
+            text-indent: 0;
+            border-color: inherit;
+            border-collapse: collapse
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            font-family: inherit;
+            font-feature-settings: inherit;
+            font-variation-settings: inherit;
+            font-size: 100%;
+            font-weight: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+            color: inherit;
+            margin: 0;
+            padding: 0
+        }
+
+        button,
+        select {
+            text-transform: none
+        }
+
+        button,
+        input:where([type=button]),
+        input:where([type=reset]),
+        input:where([type=submit]) {
+            -webkit-appearance: button;
+            background-color: transparent;
+            background-image: none
+        }
+
+        :-moz-focusring {
+            outline: auto
+        }
+
+        :-moz-ui-invalid {
+            box-shadow: none
+        }
+
+        progress {
+            vertical-align: baseline
+        }
+
+        ::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+            height: auto
+        }
+
+        [type=search] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px
+        }
+
+        ::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit
+        }
+
+        summary {
+            display: list-item
+        }
+
+        blockquote,
+        dd,
+        dl,
+        figure,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        hr,
+        p,
+        pre {
+            margin: 0
+        }
+
+        fieldset {
+            margin: 0;
+            padding: 0
+        }
+
+        legend {
+            padding: 0
+        }
+
+        menu,
+        ol,
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        dialog {
+            padding: 0
+        }
+
+        textarea {
+            resize: vertical
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            opacity: 1;
+            color: #9ca3af
+        }
+
+        [role=button],
+        button {
+            cursor: pointer
+        }
+
+        :disabled {
+            cursor: default
+        }
+
+        audio,
+        canvas,
+        embed,
+        iframe,
+        img,
+        object,
+        svg,
+        video {
+            display: block;
+            vertical-align: middle
+        }
+
+        img,
+        video {
+            max-width: 100%;
+            height: auto
+        }
+
+        [hidden]:where(:not([hidden=until-found])) {
+            display: none
+        }
+
+        .container {
+            width: 100%
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px
+            }
+        }
+
+        @media (min-width: 1536px) {
+            .container {
+                max-width: 1536px
+            }
+        }
+
+        .sticky {
+            position: sticky
+        }
+
+        .top-0 {
+            top: 0px
+        }
+
+        .z-50 {
+            z-index: 50
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .mb-12 {
+            margin-bottom: 3rem
+        }
+
+        .mb-16 {
+            margin-bottom: 4rem
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem
+        }
+
+        .mb-3 {
+            margin-bottom: 0.75rem
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem
+        }
+
+        .ml-2 {
+            margin-left: 0.5rem
+        }
+
+        .ml-4 {
+            margin-left: 1rem
+        }
+
+        .mr-2 {
+            margin-right: 0.5rem
+        }
+
+        .mr-3 {
+            margin-right: 0.75rem
+        }
+
+        .mt-1 {
+            margin-top: 0.25rem
+        }
+
+        .mt-12 {
+            margin-top: 3rem
+        }
+
+        .mt-4 {
+            margin-top: 1rem
+        }
+
+        .block {
+            display: block
+        }
+
+        .inline-block {
+            display: inline-block
+        }
+
+        .flex {
+            display: flex
+        }
+
+        .inline-flex {
+            display: inline-flex
+        }
+
+        .grid {
+            display: grid
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .h-1 {
+            height: 0.25rem
+        }
+
+        .h-48 {
+            height: 12rem
+        }
+
+        .h-6 {
+            height: 1.5rem
+        }
+
+        .h-64 {
+            height: 16rem
+        }
+
+        .h-auto {
+            height: auto
+        }
+
+        .w-20 {
+            width: 5rem
+        }
+
+        .w-24 {
+            width: 6rem
+        }
+
+        .w-6 {
+            width: 1.5rem
+        }
+
+        .w-full {
+            width: 100%
+        }
+
+        .max-w-2xl {
+            max-width: 42rem
+        }
+
+        .max-w-4xl {
+            max-width: 56rem
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr))
+        }
+
+        .flex-col {
+            flex-direction: column
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap
+        }
+
+        .items-start {
+            align-items: flex-start
+        }
+
+        .items-center {
+            align-items: center
+        }
+
+        .justify-center {
+            justify-content: center
+        }
+
+        .justify-between {
+            justify-content: space-between
+        }
+
+        .gap-10 {
+            gap: 2.5rem
+        }
+
+        .gap-12 {
+            gap: 3rem
+        }
+
+        .gap-3 {
+            gap: 0.75rem
+        }
+
+        .gap-4 {
+            gap: 1rem
+        }
+
+        .gap-6 {
+            gap: 1.5rem
+        }
+
+        .gap-8 {
+            gap: 2rem
+        }
+
+        .space-x-2> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+            margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-x-4> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(1rem * var(--tw-space-x-reverse));
+            margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-x-6> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+            margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-x-8> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(2rem * var(--tw-space-x-reverse));
+            margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)))
+        }
+
+        .space-y-2> :not([hidden])~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
+        }
+
+        .overflow-hidden {
+            overflow: hidden
+        }
+
+        .rounded-full {
+            border-radius: 9999px
+        }
+
+        .rounded-lg {
+            border-radius: 0.5rem
+        }
+
+        .border {
+            border-width: 1px
+        }
+
+        .border-t {
+            border-top-width: 1px
+        }
+
+        .border-\[\#333333\] {
+            --tw-border-opacity: 1;
+            border-color: rgb(10 11 10 / var(--tw-border-opacity, 1))
+        }
+
+        .border-\[\#856146\] {
+            --tw-border-opacity: 1;
+            border-color: rgb(66 47 36 / var(--tw-border-opacity, 1))
+        }
+
+        .border-\[\#856146\] {
+            --tw-border-opacity: 1;
+            border-color: rgb(66 47 36 / var(--tw-border-opacity, 1))
+        }
+
+        .border-\[\#856146\] {
+            --tw-border-opacity: 1;
+            border-color: rgb(216 181 149 / var(--tw-border-opacity, 1))
+        }
+
+        .border-gray-300 {
+            --tw-border-opacity: 1;
+            border-color: rgb(209 213 219 / var(--tw-border-opacity, 1))
+        }
+
+        .bg-\[\#F7F5F2\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(248 245 242 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#333333\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(11 11 9 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#333333\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(47 76 69 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#856146\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(66 47 36 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#856146\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(66 47 36 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#856146\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(216 181 151 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#856146\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(216 181 149 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-white {
+            --tw-bg-opacity: 1;
+            background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+        }
+
+        .object-cover {
+            object-fit: cover
+        }
+
+        .p-4 {
+            padding: 1rem
+        }
+
+        .p-6 {
+            padding: 1.5rem
+        }
+
+        .p-8 {
+            padding: 2rem
+        }
+
+        .px-12 {
+            padding-left: 3rem;
+            padding-right: 3rem
+        }
+
+        .px-3 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem
+        }
+
+        .px-8 {
+            padding-left: 2rem;
+            padding-right: 2rem
+        }
+
+        .py-12 {
+            padding-top: 3rem;
+            padding-bottom: 3rem
+        }
+
+        .py-16 {
+            padding-top: 4rem;
+            padding-bottom: 4rem
+        }
+
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem
+        }
+
+        .py-20 {
+            padding-top: 5rem;
+            padding-bottom: 5rem
+        }
+
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem
+        }
+
+        .pb-4 {
+            padding-bottom: 1rem
+        }
+
+        .pt-8 {
+            padding-top: 2rem
+        }
+
+        .text-center {
+            text-align: center
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+            line-height: 2rem
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+            line-height: 2.5rem
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem
+        }
+
+        .font-bold {
+            font-weight: 700
+        }
+
+        .font-medium {
+            font-weight: 500
+        }
+
+        .font-semibold {
+            font-weight: 600
+        }
+
+        .text-\[\#333333\] {
+            --tw-text-opacity: 1;
+            color: rgb(11 11 9 / var(--tw-text-opacity, 1))
+        }
+
+        .text-\[\#333333\] {
+            --tw-text-opacity: 1;
+            color: rgb(10 11 10 / var(--tw-text-opacity, 1))
+        }
+
+        .text-\[\#333333\] {
+            --tw-text-opacity: 1;
+            color: rgb(47 76 69 / var(--tw-text-opacity, 1))
+        }
+
+        .text-\[\#856146\] {
+            --tw-text-opacity: 1;
+            color: rgb(66 47 36 / var(--tw-text-opacity, 1))
+        }
+
+        .text-\[\#856146\] {
+            --tw-text-opacity: 1;
+            color: rgb(216 181 151 / var(--tw-text-opacity, 1))
+        }
+
+        .text-\[\#F7F5F2\] {
+            --tw-text-opacity: 1;
+            color: rgb(248 245 242 / var(--tw-text-opacity, 1))
+        }
+
+        .text-\[\#856146\] {
+            --tw-text-opacity: 1;
+            color: rgb(216 181 149 / var(--tw-text-opacity, 1))
+        }
+
+        .text-gray-700 {
+            --tw-text-opacity: 1;
+            color: rgb(55 65 81 / var(--tw-text-opacity, 1))
+        }
+
+        .shadow-lg {
+            --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-md {
+            --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-sm {
+            --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-xl {
+            --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .transition {
+            transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms
+        }
+
+        .duration-300 {
+            transition-duration: 300ms
+        }
+
+        .hover\:bg-\[\#333333\]:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(47 76 69 / var(--tw-bg-opacity, 1))
+        }
+
+        .hover\:bg-\[\#F7F5F2\]:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(248 245 242 / var(--tw-bg-opacity, 1))
+        }
+
+        .hover\:text-\[\#222222\]:hover {
+            --tw-text-opacity: 1;
+            color: rgb(30 54 48 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-\[\#333333\]:hover {
+            --tw-text-opacity: 1;
+            color: rgb(47 76 69 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-\[\#856146\]:hover {
+            --tw-text-opacity: 1;
+            color: rgb(216 181 151 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-\[\#F7F5F2\]:hover {
+            --tw-text-opacity: 1;
+            color: rgb(248 245 242 / var(--tw-text-opacity, 1))
+        }
+
+        .focus\:border-\[\#856146\]:focus {
+            --tw-border-opacity: 1;
+            border-color: rgb(66 47 36 / var(--tw-border-opacity, 1))
+        }
+
+        .focus\:outline-none:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px
+        }
+
+        @media (min-width: 640px) {
+            .sm\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+        }
+
+        @media (min-width: 768px) {
+            .md\:col-span-2 {
+                grid-column: span 2 / span 2
+            }
+
+            .md\:mb-0 {
+                margin-bottom: 0px
+            }
+
+            .md\:flex {
+                display: flex
+            }
+
+            .md\:hidden {
+                display: none
+            }
+
+            .md\:w-1\/2 {
+                width: 50%
+            }
+
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .md\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+            }
+
+            .md\:grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr))
+            }
+
+            .md\:flex-row {
+                flex-direction: row
+            }
+
+            .md\:py-24 {
+                padding-top: 6rem;
+                padding-bottom: 6rem
+            }
+
+            .md\:text-2xl {
+                font-size: 1.5rem;
+                line-height: 2rem
+            }
+
+            .md\:text-3xl {
+                font-size: 1.875rem;
+                line-height: 2.25rem
+            }
+
+            .md\:text-4xl {
+                font-size: 2.25rem;
+                line-height: 2.5rem
+            }
+
+            .md\:text-6xl {
+                font-size: 3.75rem;
+                line-height: 1
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+            }
+
+            .lg\:text-7xl {
+                font-size: 4.5rem;
+                line-height: 1
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#F7F5F2] text-[#333333]">
+    <!-- Barra de navegación -->
+    <nav class="bg-[#333333] text-[#F7F5F2] sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <span class="font-dreams text-2xl md:text-3xl"><img src="img/logoHabitekFN.png"
+                            alt="Habitek Studio"></span>
+                    <h1 class="font-dreams text-3xl md:text-4xl mb-4">Habitek Studio</h1>
+                </div>
+
+                <!-- Menú de navegación -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="nav-link hover:text-[#856146] transition duration-300">Inicio</a>
+                    <a href="#servicios" class="nav-link hover:text-[#856146] transition duration-300">¿Cómo envían mi
+                        pedido?</a>
+                    <a href="#nosotros" class="nav-link hover:text-[#856146] transition duration-300">¿Quiénes
+                        somos?</a>
+                    <a href="#pagos" class="nav-link hover:text-[#856146] transition duration-300">¿Cómo pagar?</a>
+
+                    <a href="#devolucion" class="nav-link hover:text-[#856146] transition duration-300">Devoluciones</a>
+                    <a href="#contacto" class="nav-link hover:text-[#856146] transition duration-300">Contacto</a>
+                </div>
+
+
+                <!-- Ícono de usuario -->
+                <div class="flex items-center">
+
+                    <!-- Ícono de usuario
+                    <a href="#" class="text-xl hover:text-[#856146] transition duration-300">
+                            <i class="fas fa-user"></i>
+                     </a>
+                 -->
+
+
+                    <!-- Menú móvil -->
+                    <button class="md:hidden ml-4 focus:outline-none" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menú móvil desplegable -->
+            <div class="md:hidden hidden mt-4 pb-4" id="mobile-menu">
+                <a href="#inicio" class="block py-2 hover:text-[#856146] transition duration-300">Inicio</a>
+                <a href="#servicios" class="block py-2 hover:text-[#856146] transition duration-300">¿Cómo envían mi
+                    pedido?</a>
+                <a href="#nosotros" class="block py-2 hover:text-[#856146] transition duration-300">¿Quiénes somos?</a>
+                <a href="#pagos" class="block py-2 hover:text-[#856146] transition duration-300">¿Cómo pagar?</a>
+                <a href="#devolucion" class="block py-2 hover:text-[#856146] transition duration-300">Devoluciones</a>
+                <a href="#contacto" class="block py-2 hover:text-[#856146] transition duration-300">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section flex items-center justify-center text-center text-[#F7F5F2]">
+        <div class="container mx-auto px-6">
+
+            <img src="img/logoHabitekSF1.png" alt="Logo" class="mx-auto px-6">
+            <h1 class="font-dreams text-4xl md:text-6xl lg:text-7xl mb-6">Diseño y Fabricación en Melamina</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Transformamos espacios con muebles funcionales,
+                modernos y de la más alta calidad</p>
+            <a href="#contacto"
+                class="bg-[#856146] hover:bg-[#856146] text-[#F7F5F2] font-medium py-3 px-8 rounded-full transition duration-300 inline-block">
+                Solicita tu diseño personalizado
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section id="servicios" class="py-20 bg-[#F7F5F2]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-dreams text-3xl md:text-4xl mb-4">¿Cómo envían mi pedido?</h2>
+                <div class="w-24 h-1 bg-[#856146] mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Servicio 1 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="text-[#856146] text-4xl mb-6">
+                        <i class="fas fa-truck-arrow-right"></i>
+                    </div>
+                    <h3 class="font-dreams text-2xl mb-4">¿Cuando despachan mi pedido?</h3>
+                    <p class="text-gray-700 mb-4">Hacemos el mejor esfuerzo para despachar
+                        sus pedidos lo más pronto posible, de tal manera que tratamos de enviar
+                        los productos el mismo día del pago, siempre y cuando el pago de su orden
+                        sea confirmado hasta las 4:00PM de lunes a viernes, y hasta las 11:00 AM los
+                        días sábados. Los pedidos pagados los días Festivos serán despachados al siguiente
+                        día hábil. Una vez realizado el enví­o se enviará, en el transcurso del día, el número
+                        de guí­a y la empresa transportadora.</p>
+                    <a href="#contacto"
+                        class="text-[#856146] hover:text-[#333333] font-medium transition duration-300 inline-flex items-center">
+                        Más información <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="text-[#856146] text-4xl mb-6">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="font-dreams text-2xl mb-4">¿Cuánto tiempo se demora en llegar a mi destino?</h3>
+                    <p class="text-gray-700 mb-4">Los tiempos de transito pueden variar dependiendo al destino,
+                        para Bogotá y Cundinamarca el transito normalmente es de 1 día, para ciudades principales
+                        como Medellín, Cali, Pereira, Bucaramanga, entre otras, el transito es de 1 a 2 días hábiles,
+                        para municipios que se encuentran apartados de las ciudades principales, o también denominados
+                        trayectos especiales, el transito puede oscilar entre 3 a 6 días hábiles. Tenga en cuenta que
+                        los posibles retrasos o eventualidades con su pedido será responsabilidad directa de la empresa
+                        de mensajería, y que XXXXXXXXXXX podrá colaborar con la solución de estos impases, pero no se
+                        hace responsable por problemáticas ocasionadas por la empresa transportadora o por el comprador.
+                    </p>
+                    <a href="#contacto"
+                        class="text-[#856146] hover:text-[#333333] font-medium transition duration-300 inline-flex items-center">
+                        Más información <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="text-[#856146] text-4xl mb-6">
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+                    <h3 class="font-dreams text-2xl mb-4">¿Puedo recoger mi pedido personalmente?</h3>
+                    <p class="text-gray-700 mb-4">La entrega personal de su pedido se puede hacer si se
+                        realiza en la ciudad de Chiquinquirà para tal caso se puede acordar una cita previa
+                        comunicándose a habitekstudio@gmail.com o llamando a las líneas telefónicas de atención al
+                        cliente.</p>
+                    <a href="#contacto"
+                        class="text-[#856146] hover:text-[#333333] font-medium transition duration-300 inline-flex items-center">
+                        Más información <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="py-16 md:py-24 bg-[#F7F5F2]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-[#333333] mb-4">¿Quiénes somos?</h2>
+                <div class="w-20 h-1 bg-[#856146] mx-auto"></div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
+                        alt="Nuestro taller" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="title-font text-2xl font-semibold text-[#333333] mb-4">EMPRESA</h3>
+                    <p class="text-lg text-[#333333] mb-6">Habitek Studio es una empresa Colombiana creada en el
+                        municipio de Chiquinquirá, Boyacá, dedicada a la venta de muebles modulares en todo el
+                        territorio Colombiano a través de internet.</p>
+                    <P class="text-lg text-[#333333] mb-6">Habitek Studio se caracteriza por brindar
+                        los mejores precios del mercado, gracias a la red de proveedores que se han
+                        adquirido en Asia, Europa y América, permitiendo así­ tener contacto directo
+                        con diversos fabricantes, quienes cumplen con los más altos estándares de calidad
+                        y a los mejores precios, al ser importadores directos.</P>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-bullseye text-xl text-[#333333] mr-2"></i>
+                                <h4 class="font-semibold text-[#333333]">MISIÓN</h4>
+                            </div>
+                            <p class="text-[#333333]">Somos una tienda virtual de Chiquinquirà dedicada a
+                                la importación y comercialización de muebles modulares en todo el territorio
+                                colombiano que tiene como propósito brindar a nuestros clientes soluciones
+                                integrales satisfaciendo sus necesidades en cuanto a precio, calidad, cumplimiento
+                                y agilidad en la entrega.</p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-eye text-xl text-[#333333] mr-2"></i>
+                                <h4 class="font-semibold text-[#333333]">Visión</h4>
+                            </div>
+                            <p class="text-[#333333]"> Para el año 2028 queremos ser una empresa
+                                líder a nivel latinoamericano, reconocidos en el mercado como una de
+                                las grandes redes de distribuidores directos y marca pionera en venta de muebles
+                                innovadores haciendo frente al mercado cambiante y competitivo, en pro
+                                de generar crecimiento económico en el país y nuestros accionistas.</p>
+                        </div>
+
+                    </div>
+
+                    <h3 class="title-font text-2xl font-semibold text-[#333333] mb-4">Valores Corporativos</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center bg-white px-3 py-2 rounded-full shadow-sm">
+                            <i class="fas fa-check-circle text-[#333333] mr-2"></i>
+                            <span class="text-[#333333]">Integridad: Conservar altos estándares de principios éticos y
+                                morales para irradiar honestidad y fiabilidad en nuestros relaciones.</span>
+                        </div>
+                        <div class="flex items-center bg-white px-3 py-2 rounded-full shadow-sm">
+                            <i class="fas fa-check-circle text-[#333333] mr-2"></i>
+                            <span class="text-[#333333]">Trabajo en Equipo: Integramos habilidades y
+                                conocimientos con el fin de construir bases firmes en las relaciones
+                                interpersonales.</span>
+                        </div>
+                        <div class="flex items-center bg-white px-3 py-2 rounded-full shadow-sm">
+                            <i class="fas fa-check-circle text-[#333333] mr-2"></i>
+                            <span class="text-[#333333]">Calidad: Colocamos nuestro mayor esfuerzo y
+                                dedicación para superar siempre las expectativas de nuestros clientes.</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pagos Section -->
+    <section id="pagos" class="py-16 md:py-24 bg-[#F7F5F2]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-[#333333] mb-4">¿Cómo pagar?</h2>
+                <p class="text-lg text-[#333333] max-w-2xl mx-auto">A continuación se mencionan las diferentes
+                    formas de pago para la empresa Habitek Studio, cada forma de pago está sujeta a las condiciones
+                    en este mismo artículo</p>
+                <div class="w-20 h-1 bg-[#856146] mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <div class="blog-card bg-white rounded-lg overflow-hidden shadow-md"
+                    style="opacity: 1; transform: translateY(0px);">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-[#333333] mb-3">
+                            <i class="far fa-calendar-alt text-[#856146] mr-2"></i>
+                            <span>01 Enero 2026</span>
+                        </div>
+                        <h3 class="title-font text-xl font-semibold text-[#333333] mb-3">Pago a CONTRA ENTREGA
+                            (Chiquinquirá).</h3>
+                        <p class="text-[#333333] mb-4">Para acordar este medio de pago debe realizar la orden por
+                            nuestra página web y en FORMAS DE ENTREGA seleccionar domicilio Chiquinquirá,
+                            posteriormente, en el Ítem 3 llamado ELIJA SU MODO DE PAGO seleccionar Pago a Contra
+                            entrega.
+                            Es importante recordar que este servicio solo está habilitado para Chiquinquirá y sus
+                            alrededores
+                            Por favor confirmar su orden por Whatsapp al número +57 311 512 06 52 facilitando su correo
+                            electrónico
+                            para agilizar el proceso de envió
+                        </p>
+
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="blog-card bg-white rounded-lg overflow-hidden shadow-md"
+                    style="opacity: 1; transform: translateY(0px);">
+
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-[#333333] mb-3">
+                            <i class="far fa-calendar-alt text-[#856146] mr-2"></i>
+                            <span>01 Enero 2026</span>
+                        </div>
+                        <h3 class="title-font text-xl font-semibold text-[#333333] mb-3">Consignación o Transferencia
+                            Bancaria</h3>
+                        <h4 class="text-sm font-semibold text-[#333333] mb-2">Bancolombia</h4>
+                        <p class="text-[#333333] mb-4">El pago por Bancolombia es gratuito si y solo sí­ se realiza una
+                            transferencia electrónica a través de uncajero electrónico, la Sucursal Virtual, o la APP de
+                            Bancolombia (La APP solo está disponible para la cuenta de ahorros a nombre de Elkin Daniel
+                            Silva o si
+                            se realiza una consignación dentro del departamento de Boyacá ,o sí la consignación es igual
+                            o superior a $370.000, si se realiza una consignación fuera del departamento de Boyacá,
+                            Bancolombia cobrará una comisión de $11.500 la cual deberá ser asumida por el comprador. SI
+                            SU COMPRA SUPERA LOS $370.000 NO ES NECESARIO PAGAR LA COMISIÓN DE BANCOLOMBIA POR
+                            CONSIGNACIÓN
+                            Los datos de las cuentas son:
+                            Titular: Elkin Daniel Silva Laiton (Cuenta compatible con la APP de Bancolombia, para hacer
+                            transferencias
+                            a cuentas no inscritas)
+                            Cuenta de Ahorros: 260-123456-98
+                            Cédula:10053349332
+                            Cuenta Corriente: 260-356482-95
+                            Titular: HabitekStudio SAS
+                            NIT: 98 000 045
+                            Cuenta de ahorros: 264-245689-94
+                            Titular: HabitekStudio SAS
+                            NIT: 90 000 985
+                            Para realizar el enví­o de los productos comprados, se debe enviar el comprobante de pago al
+                            correo habitekstudio@gmail.com , si no se enví­a el comprobante de pago, Habitek Studio SAS
+                            asumirá que
+                            el pago aún no se ha efectuado y por tal razón no realizará el enví­o de los productos.
+                        </p>
+
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="blog-card bg-white rounded-lg overflow-hidden shadow-md"
+                    style="opacity: 1; transform: translateY(0px);">
+
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-[#333333] mb-3">
+                            <i class="far fa-calendar-alt text-[#856146] mr-2"></i>
+                            <span>01 Enero 2026</span>
+                        </div>
+                        <h3 class="title-font text-xl font-semibold text-[#333333] mb-3">EFECTY</h3>
+                        <p class="text-[#333333] mb-4">Para realizar el pago por EFECTY tiene que tener en cuenta que la
+                            comisión debe ser asumida por usted, el comprador, los cargos por el giro pueden variar
+                            dependiendo a la suma pagada y a la empresa en donde se efectué el pago. SI SU COMPRA SUPERA
+                            LOS $100.000 NO ES NECESARIO PAGAR LA COMISIÓN DE EFECTY
+                            Girar a nombre de: Daniel Silva
+                            Cédula: 1053349332
+                            Chiquinquirá Boyacá
+                            Para realizar el enví­o de los productos comprados, se debe enviar el comprobante de pago al
+                            correo habitekstudio@gmail.com , si no se enví­a el comprobante de pago, Habitek Studio SAS
+                            asumirá que
+                            el pago aún no se ha efectuado y por tal razón no realizará el enví­o de los productos.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- devouciones Section -->
+    <section id="devolucion" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-[#333333] mb-4">Devoluciones
+                </h2>
+                <div class="w-20 h-1 bg-[#856146] mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Devoluciones 1 -->
+                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
+
+                    <h3 class="font-dreams text-2xl mb-4">Nuestra garantía contigo</h3>
+                    <p class="text-[#0A0B0A] mb-4">"Nuestra garantía de satisfacción es incondicional. Si crees que los
+                        productos adquiridos en nuestro sitio web no se ajustan a tus necesidades (sujetos a un desgaste
+                        normal), devuelve tu pedido y recibirás un reembolso."</p>
+                    <p class="text-[#0A0B0A] mb-4">Para que estés satisfecho al 100%, puedes devolver las compras
+                        realizadas en Habitek Studio SAS en un plazo de 30 días. Todos los paquetes de devolución
+                        deberán
+                        enviarse con nuestro proveedor logístico (Servientrega).</p>
+
+                </div>
+
+                <!-- Devoluciones 2 -->
+                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
+
+                    <h3 class="font-dreams text-2xl mb-4">¿Qué se puede devolver?
+                    </h3>
+                    <p class="text-[#0A0B0A] mb-4">"Una vez entregados todos nuestros productos se pueden devolver
+                        siempre que el embalaje no haya sido abierto y esté en perfectas condiciones. En el caso que el
+                        producto se reciba en malas condiciones o con desperfectos visibles en el embalaje el mismo
+                        deberá ser rechazado y devuelto al mismo transportar que le intenta hacer la entrega del mismo.
+                        La aceptación de un producto en malas condiciones sólo podrá ser motivo de devolución mientras
+                        haya una comunicación por escrito por parte de nuestro distribuidor."</p>
+                    <p class="text-[#0A0B0A] mb-4">En el caso que vaya a aceptar un producto con el embalaje damnificado
+                        deberá hacer constancia de los daños del embalaje en el albarán de entrega. Es muy importante
+                        instruir al personal de su empresa o centro educativo al respecto una vez haya realizado su
+                        pedido en nuestra tienda online.</p>
+
+                </div>
+
+                <!-- Devoluciones 3 -->
+                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
+
+                    <h3 class="font-dreams text-2xl mb-4">Los productos devueltos en malas condiciones
+                    </h3>
+                    <p class="text-[#0A0B0A] mb-4">"No se aceptan las devoluciones de productos sin el embalaje
+                        original. En el caso que sea necesario podrán ser adquiridos embalajes de fábrica para la
+                        devolución de los productos."</p>
+
+
+                </div>
+                <!-- Devoluciones 4 -->
+                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
+
+                    <h3 class="font-dreams text-2xl mb-4">Importe del reembolso
+                    </h3>
+                    <p class="text-[#0A0B0A] mb-4">"Una vez recibido el producto devuelto con el embalaje original
+                        intacto y en perfectas condiciones se podrecerá a la devolución del importe íntegro de la compra
+                        incluyendo los impuestos, pero deducido de los portes de devolución en caso de que los mismos no
+                        hayan sido abonados por el cliente. No se cobrará ningún tipo de recargo por la devolución."</p>
+
+
+                </div>
+                <!-- Devoluciones 5 -->
+                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
+
+                    <h3 class="font-dreams text-2xl mb-4">Medios de pago
+                    </h3>
+                    <p class="text-[#0A0B0A] mb-4">"Las devoluciones se harán por transferencia bancaria a la cuenta
+                        bancaria de la entidad facturada por la venta y en un plazo máximo de 60 días tras recibir la
+                        mercancía devuelta."</p>
+
+
+                </div>
+                <!-- Devoluciones 6 -->
+                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
+
+                    <h3 class="font-dreams text-2xl mb-4">Plazo para la devolución
+                    </h3>
+                    <p class="text-[#0A0B0A] mb-4">"El plazo de devolución de un articulo adquirido es de 15 días
+                        naturales tras la compra del mismo. Se podrá ampliar dicho plazo mediante una solicitud y
+                        aceptación por escrito por parte de la empresa, la cual deberá ser solicitada antes de la
+                        compra."</p>
+
+
+                </div>
+                <!-- Devoluciones 7 -->
+                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
+
+                    <h3 class="font-dreams text-2xl mb-4">¿Dónde hay que enviar la devolución?
+                    </h3>
+                    <p class="text-[#0A0B0A] mb-4">"La dirección para devolución de los productos será comunicada en el
+                        momento de la solicitud de la misma. La misma puede variar en función de su zona geográfica."
+                    </p>
+
+
+                </div>
+                <!-- Devoluciones 8 -->
+                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
+
+                    <h3 class="font-dreams text-2xl mb-4">¿Qué hay de los cambios?
+                    </h3>
+                    <p class="text-[#0A0B0A] mb-4">"Una vez adquirido un producto el cliente puede solicitar el cambio
+                        del mismo siempre que el embalaje original esté intacto. En las compras por un valor inferior no
+                        se abonará la diferencia en caso de cambio, sin embargo dicha diferencia podrá ser compensada
+                        con un crédito o descuento que se hará por el mismo importe en la compra siguiente."
+                    </p>
+
+
+                </div>
+                <!-- Devoluciones 9 -->
+                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
+
+                    <h3 class="font-dreams text-2xl mb-4">Situaciones especiales:
+                    </h3>
+                    <h4 class="font-medium text-lg mb-4">Rebajas</h4>
+                    <p class="text-[#0A0B0A] mb-4">"En los períodos de rebajas o descuentos y ofertas especiales se
+                        aplican las mismas condiciones de devolución, excepto que se indique lo contrario en la propia
+                        oferta."
+                    </p>
+                    <h4 class="font-medium text-lg mb-4">Fuera de plazo</h4>
+                    <p class="text-[#0A0B0A] mb-4">"No se procederá al reembolso de los artículos devueltos que lleguen
+                        fuera de plazo. En el caso que sea necesario podrá solicitar la ampliación de plazo de
+                        devolución antes de realizar su compra."
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-dreams text-3xl md:text-4xl mb-4">Contacto</h2>
+                <div class="w-24 h-1 bg-[#856146] mx-auto"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label for="nombre" class="block text-gray-700 mb-2">Nombre completo</label>
+                        <input type="text" id="nombre"
+                            class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-[#856146] transition duration-300">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-gray-700 mb-2">Correo electrónico</label>
+                        <input type="email" id="email"
+                            class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-[#856146] transition duration-300">
+                    </div>
+
+                    <div>
+                        <label for="telefono" class="block text-gray-700 mb-2">Teléfono</label>
+                        <input type="tel" id="telefono"
+                            class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-[#856146] transition duration-300">
+                    </div>
+
+                    <div>
+                        <label for="servicio" class="block text-gray-700 mb-2">Servicio de interés</label>
+                        <select id="servicio"
+                            class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-[#856146] transition duration-300">
+                            <option value="">Seleccione un servicio</option>
+                            <option value="muebles">Muebles a medida</option>
+                            <option value="diseno">Diseño personalizado</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <label for="mensaje" class="block text-gray-700 mb-2">Mensaje</label>
+                        <textarea id="mensaje" rows="5"
+                            class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-[#856146] transition duration-300"></textarea>
+                    </div>
+
+                    <div class="md:col-span-2 text-center">
+                        <button type="submit"
+                            class="bg-[#856146] hover:bg-[#AB0521] text-[#F7F5F2] font-medium py-3 px-12 rounded-full transition duration-300 inline-block">
+                            Enviar consulta
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="bg-[#333333] text-[#F7F5F2] py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div>
+                    <img src="img/logoHabitekSF1.png" alt="Habitek Studio">
+
+                    <p class="text-[#856146]">Ebanistería artesanal de alta calidad</p>
+                </div>
+
+                <div>
+                    <h4 class="font-medium text-lg mb-4">Contacto</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-[#856146]"></i>
+                            <span>CaLLE 19A # 16A - 32 Chiquinquirá</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-[#856146]"></i>
+                            <span>+57 311 512 0652</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-[#856146]"></i>
+                            <span>habitekstudio@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-medium text-lg mb-4">Horario</h4>
+                    <ul class="space-y-2">
+                        <li>Lunes a Viernes: 9:00 - 18:00</li>
+                        <li>Sábados: 10:00 - 14:00</li>
+                        <li>Domingos: Cerrado</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-medium text-lg mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl text-[#856146] hover:text-[#F7F5F2] transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-2xl text-[#856146] hover:text-[#F7F5F2] transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-2xl text-[#856146] hover:text-[#F7F5F2] transition duration-300">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-[#856146] mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-[#856146] text-sm">© 2025 Habitek Studio. Todos los derechos reservados.</p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="#" class="text-sm hover:text-[#856146] transition duration-300">Política de privacidad</a>
+                    <a href="#" class="text-sm hover:text-[#856146] transition duration-300">Términos y condiciones</a>
+                    <a href="#" class="text-sm hover:text-[#856146] transition duration-300">Aviso legal</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menú móvil
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling para enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Cerrar menú móvil si está abierto
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+    <!-- Botón flotante de WhatsApp 
+    <a href="https://wa.me/+573203750427" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">¡Chatea con nosotros!</span>
+    </a>
+    -->
+
+    <script>
+        // Opcional: Puedes añadir interacción adicional con JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            const whatsappBtn = document.querySelector('.whatsapp-float');
+
+            // Efecto al hacer clic
+            whatsappBtn.addEventListener('click', function () {
+                // Aquí podrías añadir tracking o analytics
+                console.log('Botón de WhatsApp clickeado');
+            });
+
+            // Cambiar el número de teléfono según el dispositivo (ejemplo)
+            function updateWhatsappNumber() {
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const phoneNumber = isMobile ? '+573203750427' : '+573203750427';
+                whatsappBtn.href = `https://wa.me/${phoneNumber}`;
+            }
+
+            updateWhatsappNumber();
+        });
+    </script>
+    <script>
+        // Product filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                productCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Initialize filter to show all products
+        document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+
+        // Scroll reveal animation
+        window.addEventListener('scroll', revealOnScroll);
+
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.product-card, .blog-card, .testimonial-card');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>
