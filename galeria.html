@@ -8,6 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&amp;display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- PayPal SDK (Sandbox) -->
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
     <style>
         @font-face {
             font-family: 'Million Dreams';
@@ -47,13 +51,24 @@
         }
 
         .product-card {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: 16px;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(133, 97, 70, 0.1);
+            border-color: rgba(133, 97, 70, 0.2);
+        }
+
+        .product-card img.slide {
+            transition: transform 0.7s ease;
+        }
+
+        .product-card:hover img.slide {
+            transform: scale(1.05);
         }
 
         .btn-primary {
@@ -1219,10 +1234,12 @@
             <div class="flex items-center justify-between relative">
 
                 <!-- Logo -->
-                <div class="flex items-center space-x-3">
-                    <img src="img/logoHabitekSF.png" class="h-10" alt="Habitek Studio">
-                    <h1 class="text-2xl md:text-3xl">Habitek Studio</h1>
-                </div>
+                <a href="index.html">
+                    <div class="flex items-center space-x-3">
+                        <img src="img/logoHabitekSF.png" class="h-10" alt="Habitek Studio">
+                        <h1 class="text-2xl md:text-3xl">Habitek Studio</h1>
+                    </div>
+                </a>
 
                 <!-- MENÚ DESKTOP CENTRADO -->
                 <div class="hidden md:flex items-center space-x-8 
@@ -1296,65 +1313,63 @@
             <!-- MENÚ MOBILE -->
             <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 transition-all duration-300">
 
-                <a href="index.html#inicio" class="block py-2 hover:text-[#AB0521]">Inicio</a>
+                <a href="index.html#inicio" class="block py-2 hover:text-[#856146]">Inicio</a>
 
                 <!-- DROPDOWN MOBILE -->
                 <button id="mobileDropdownBtn"
-                    class="w-full text-left py-2 flex justify-between items-center hover:text-[#AB0521]">
+                    class="w-full text-left py-2 flex justify-between items-center hover:text-[#856146]">
                     Información
                     <span id="arrow">▼</span>
                 </button>
 
                 <div id="mobileDropdown" class="hidden pl-4 transition-all duration-300">
 
-                    <a href="index.html#nosotros" class="block py-2 hover:text-[#AB0521]">
+                    <a href="index.html#nosotros" class="block py-2 hover:text-[#856146]">
                         ¿Quiénes somos?
                     </a>
 
-                    <a href="index.html#servicios" class="block py-2 hover:text-[#AB0521]">
+                    <a href="index.html#servicios" class="block py-2 hover:text-[#856146]">
                         ¿Cómo envían mi pedido?
                     </a>
 
 
-                    <a href="index.html#pagos" class="block py-2 hover:text-[#AB0521]">
+                    <a href="index.html#pagos" class="block py-2 hover:text-[#856146]">
                         ¿Cómo pagar?
                     </a>
 
-                    <a href="index.html#devolucion" class="block py-2 hover:text-[#AB0521]">
+                    <a href="index.html#devolucion" class="block py-2 hover:text-[#856146]">
                         Devoluciones
                     </a>
                 </div>
 
-                <a href="index.html#contacto" class="block py-2 hover:text-[#AB0521]">Contacto</a>
+                <a href="index.html#contacto" class="block py-2 hover:text-[#856146]">Contacto</a>
             </div>
         </div>
     </nav>
     <!-- PANEL CARRITO -->
     <div id="cartPanel"
-        class="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        class="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-[110] flex flex-col">
 
-        <div class="p-5 flex justify-between items-center border-b">
+        <div class="p-5 flex justify-between items-center border-b shrink-0">
             <h2 class="text-xl font-bold text-[#333333]">Carrito</h2>
             <button id="closeCart" class="text-xl">✕</button>
         </div>
 
         <!-- Productos -->
-        <div id="cartItems" class="p-4 space-y-3 overflow-y-auto h-[60%]">
+        <div id="cartItems" class="p-4 space-y-3 overflow-y-auto flex-1">
             <p class="text-gray-500">Tu carrito está vacío</p>
         </div>
 
         <!-- Total -->
-        <div class="p-4 border-t">
+        <div class="p-4 border-t shrink-0 overflow-y-auto max-h-[70vh] custom-scrollbar">
             <div class="flex justify-between mb-3">
                 <span class="font-bold">Total:</span>
                 <span id="cartTotal">$0</span>
             </div>
 
-            <button onclick="finalizarCompra()" class="w-full bg-[#856146] text-white py-2 rounded mb-2">
-                Ir a pagar
-            </button>
+            <div id="paypal-button-container" class="mt-4"></div>
 
-            <button onclick="clearCart()" class="w-full border border-gray-400 py-2 rounded">
+            <button onclick="clearCart()" class="w-full border border-gray-400 py-2 rounded mt-2">
                 Vaciar carrito
             </button>
         </div>
@@ -2828,50 +2843,6 @@
     -->
 
     <!-- SCRIPT -->
-    <script>
-        // =========================
-        // DROPDOWN DESKTOP
-        // =========================
-        const dropdownBtn = document.getElementById("dropdownButton");
-        const dropdownMenu = document.getElementById("dropdownMenu");
-
-        dropdownBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            dropdownMenu.classList.toggle("opacity-0");
-            dropdownMenu.classList.toggle("invisible");
-            dropdownMenu.classList.toggle("scale-95");
-        });
-
-        document.addEventListener("click", (e) => {
-            if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                dropdownMenu.classList.add("opacity-0", "invisible", "scale-95");
-            }
-        });
-
-        // =========================
-        // MENÚ MOBILE
-        // =========================
-        const mobileBtn = document.getElementById("mobileMenuBtn");
-        const mobileMenu = document.getElementById("mobileMenu");
-
-        mobileBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-        });
-
-        // =========================
-        // DROPDOWN MOBILE
-        // =========================
-        const mobileDropdownBtn = document.getElementById("mobileDropdownBtn");
-        const mobileDropdown = document.getElementById("mobileDropdown");
-        const arrow = document.getElementById("arrow");
-
-        mobileDropdownBtn.addEventListener("click", () => {
-            mobileDropdown.classList.toggle("hidden");
-            arrow.classList.toggle("rotate-180");
-        });
-
-
-    </script>
     <script src="carrito.js"></script>
     <script>
         // Product filtering
@@ -2900,22 +2871,7 @@
         // Initialize filter to show all products
         document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
 
-        // Scroll reveal animation
-        window.addEventListener('scroll', revealOnScroll);
-
-        function revealOnScroll() {
-            const elements = document.querySelectorAll('.product-card, .blog-card, .testimonial-card');
-
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-
-                if (elementPosition < windowHeight - 100) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        }
+        // Note: Old revealOnScroll removed because it conflicted with AOS
     </script>
     <!--
     // =========================
@@ -2946,8 +2902,127 @@
         }
     </script>
 
+    <!-- Stock Badge Styles -->
+    <style>
+        .stock-badge {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
 
+        .stock-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
 
+        .btn-add-cart {
+            transition: all 0.3s ease !important;
+        }
+
+        .btn-add-cart:disabled {
+            opacity: 0.5 !important;
+            cursor: not-allowed !important;
+            background-color: #999 !important;
+        }
+
+        .cart-item-card {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <!-- Auto-enhance product cards with stock badges -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Find all buttons that call addToCart
+            document.querySelectorAll('.product-card .p-6').forEach(infoDiv => {
+                const btn = infoDiv.querySelector('button[onclick*="addToCart"]');
+                if (!btn) return;
+
+                // Extract product name from onclick attribute
+                const onclickStr = btn.getAttribute('onclick');
+                const match = onclickStr.match(/addToCart\('([^']+)'/);
+                if (!match) return;
+
+                const productName = match[1];
+
+                // Add class and data-product attribute to the button
+                btn.classList.add('btn-add-cart');
+                btn.setAttribute('data-product', productName);
+
+                // Create stock badge row and insert before the button
+                const stockRow = document.createElement('div');
+                stockRow.className = 'stock-info-row';
+                stockRow.innerHTML = `
+                    <span class="stock-badge text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-700" 
+                          data-product="${productName}">
+                        Stock: --
+                    </span>
+                    <span class="text-xs text-gray-500">Disponible</span>
+                `;
+                btn.parentElement.insertBefore(stockRow, btn);
+            });
+
+            // Now trigger the stock update
+            if (typeof updateStockBadges === 'function') {
+                updateStockBadges();
+            }
+        });
+
+        // Accordion Logic
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+
+            document.querySelectorAll('.accordion-content').forEach(c => {
+                if (c !== content) {
+                    c.style.maxHeight = null;
+                    c.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                }
+            });
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.classList.remove('rotate-180');
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.classList.add('rotate-180');
+            }
+        }
+    </script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Apply AOS attributes dynamically to all product cards for an elegant cascading effect
+        document.querySelectorAll('.product-card').forEach((card, index) => {
+            // Very important: wipe out hardcoded styles that block AOS
+            card.style.opacity = '';
+            card.style.transform = '';
+
+            if (!card.hasAttribute('data-aos')) {
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', (index % 3) * 100);
+            }
+        });
+
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
 </body>
 
 </html>

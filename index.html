@@ -8,6 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&amp;display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- PayPal SDK (Sandbox) -->
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
     <style>
         @font-face {
             font-family: 'Million Dreams';
@@ -47,13 +51,24 @@
         }
 
         .product-card {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: 16px;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(133, 97, 70, 0.1);
+            border-color: rgba(133, 97, 70, 0.2);
+        }
+
+        .product-card img.slide {
+            transition: transform 0.7s ease;
+        }
+
+        .product-card:hover img.slide {
+            transform: scale(1.05);
         }
 
         .btn-primary {
@@ -1219,10 +1234,12 @@
             <div class="flex items-center justify-between relative">
 
                 <!-- Logo -->
-                <div class="flex items-center space-x-3">
-                    <img src="img/logoHabitekSF.png" class="h-10" alt="Habitek Studio">
-                    <h1 class="text-2xl md:text-3xl">Habitek Studio</h1>
-                </div>
+                <a href="index.html">
+                    <div class="flex items-center space-x-3">
+                        <img src="img/logoHabitekSF.png" class="h-10" alt="Habitek Studio">
+                        <h1 class="text-2xl md:text-3xl">Habitek Studio</h1>
+                    </div>
+                </a>
 
                 <!-- MENÚ DESKTOP CENTRADO -->
                 <div class="hidden md:flex items-center space-x-8 
@@ -1292,64 +1309,62 @@
             <!-- MENÚ MOBILE -->
             <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 transition-all duration-300">
 
-                <a href="#inicio" class="block py-2 hover:text-[#AB0521]">Inicio</a>
+                <a href="#inicio" class="block py-2 hover:text-[#856146]">Inicio</a>
 
                 <!-- DROPDOWN MOBILE -->
                 <button id="mobileDropdownBtn"
-                    class="w-full text-left py-2 flex justify-between items-center hover:text-[#AB0521]">
+                    class="w-full text-left py-2 flex justify-between items-center hover:text-[#856146]">
                     Información
                     <span id="arrow">▼</span>
                 </button>
 
                 <div id="mobileDropdown" class="hidden pl-4 transition-all duration-300">
 
-                    <a href="#nosotros" class="block py-2 hover:text-[#AB0521]">
+                    <a href="#nosotros" class="block py-2 hover:text-[#856146]">
                         ¿Quiénes somos?
                     </a>
 
-                    <a href="#servicios" class="block py-2 hover:text-[#AB0521]">
+                    <a href="#servicios" class="block py-2 hover:text-[#856146]">
                         ¿Cómo envían mi pedido?
                     </a>
 
-                    <a href="#pagos" class="block py-2 hover:text-[#AB0521]">
+                    <a href="#pagos" class="block py-2 hover:text-[#856146]">
                         ¿Cómo pagar?
                     </a>
 
-                    <a href="#devolucion" class="block py-2 hover:text-[#AB0521]">
+                    <a href="#devolucion" class="block py-2 hover:text-[#856146]">
                         Devoluciones
                     </a>
                 </div>
 
-                <a href="#contacto" class="block py-2 hover:text-[#AB0521]">Contacto</a>
+                <a href="#contacto" class="block py-2 hover:text-[#856146]">Contacto</a>
             </div>
         </div>
     </nav>
     <!-- PANEL CARRITO -->
     <div id="cartPanel"
-        class="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        class="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-[110] flex flex-col">
 
-        <div class="p-5 flex justify-between items-center border-b">
+        <div class="p-5 flex justify-between items-center border-b shrink-0">
             <h2 class="text-xl font-bold text-[#333333]">Carrito</h2>
             <button id="closeCart" class="text-xl">✕</button>
         </div>
 
         <!-- Productos -->
-        <div id="cartItems" class="p-4 space-y-3 overflow-y-auto h-[60%]">
+        <div id="cartItems" class="p-4 space-y-3 overflow-y-auto flex-1">
             <p class="text-gray-500">Tu carrito está vacío</p>
         </div>
 
         <!-- Total -->
-        <div class="p-4 border-t">
+        <div class="p-4 border-t shrink-0 overflow-y-auto max-h-[70vh] custom-scrollbar">
             <div class="flex justify-between mb-3">
                 <span class="font-bold">Total:</span>
                 <span id="cartTotal">$0</span>
             </div>
 
-            <button onclick="finalizarCompra()" class="w-full bg-[#856146] text-white py-2 rounded mb-2">
-                Ir a pagar
-            </button>
+            <div id="paypal-button-container" class="mt-4"></div>
 
-            <button onclick="clearCart()" class="w-full border border-gray-400 py-2 rounded">
+            <button onclick="clearCart()" class="w-full border border-gray-400 py-2 rounded mt-2">
                 Vaciar carrito
             </button>
         </div>
@@ -1372,75 +1387,90 @@
     </section>
 
     <!-- About Section -->
-    <section id="nosotros" class="py-16 md:py-24 bg-[#F7F5F2]">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="title-font text-3xl md:text-4xl font-bold text-[#333333] mb-4">¿Quiénes somos?</h2>
-                <div class="w-20 h-1 bg-[#856146] mx-auto"></div>
+    <section id="nosotros" class="py-24 bg-white relative overflow-hidden">
+        <!-- Decoraciones -->
+        <div
+            class="absolute top-0 right-0 w-96 h-96 bg-[#856146] opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-72 h-72 bg-[#2F4C45] opacity-5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-dreams text-4xl md:text-5xl font-bold text-[#2F4C45] mb-4">Nuestra Esencia</h2>
+                <div class="w-24 h-1 bg-[#856146] mx-auto rounded-full"></div>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Imagen -->
+                <div class="lg:w-1/2 w-full relative" data-aos="fade-right">
+                    <div class="absolute inset-0 bg-[#856146] translate-x-4 translate-y-4 rounded-2xl opacity-20"></div>
                     <img src="https://raw.githubusercontent.com/DanielSilvaBack/imagenes-Habitek/refs/heads/master/img/ImgHabitek/ImgHabitekStudio/catalogo/tocadorA2.webp"
-                        alt="Nuestro taller" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                        alt="Nuestro taller y dedicación"
+                        class="relative z-10 rounded-2xl shadow-xl w-full h-[500px] object-cover hover:scale-[1.02] transition-transform duration-500">
                 </div>
-                <div class="md:w-1/2">
-                    <h3 class="title-font text-2xl font-semibold text-[#333333] mb-4">EMPRESA</h3>
-                    <p class="text-lg text-[#333333] mb-6">Habitek Studio es una empresa Colombiana creada en el
-                        municipio de Chiquinquirá, Boyacá, dedicada a la venta de muebles modulares en todo el
-                        territorio Colombiano a través de internet.</p>
-                    <P class="text-lg text-[#333333] mb-6">Habitek Studio se caracteriza por brindar
-                        los mejores precios del mercado, gracias a la red de proveedores que se han
-                        adquirido en Asia, Europa y América, permitiendo así­ tener contacto directo
-                        con diversos fabricantes, quienes cumplen con los más altos estándares de calidad
-                        y a los mejores precios, al ser importadores directos.</P>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <div class="bg-white p-4 rounded-lg shadow-sm">
-                            <div class="flex items-center mb-2">
-                                <i class="fas fa-bullseye text-xl text-[#333333] mr-2"></i>
-                                <h4 class="font-semibold text-[#333333]">MISIÓN</h4>
-                            </div>
-                            <p class="text-[#333333]">Somos una tienda virtual de Chiquinquirà dedicada a
-                                la importación y comercialización de muebles modulares en todo el territorio
-                                colombiano que tiene como propósito brindar a nuestros clientes soluciones
-                                integrales satisfaciendo sus necesidades en cuanto a precio, calidad, cumplimiento
-                                y agilidad en la entrega.</p>
-                        </div>
-
-                        <div class="bg-white p-4 rounded-lg shadow-sm">
-                            <div class="flex items-center mb-2">
-                                <i class="fas fa-eye text-xl text-[#333333] mr-2"></i>
-                                <h4 class="font-semibold text-[#333333]">Visión</h4>
-                            </div>
-                            <p class="text-[#333333]"> Para el año 2030 queremos ser una empresa
-                                líder a nivel latinoamericano, reconocidos en el mercado como una de
-                                las grandes redes de distribuidores directos y marca pionera en venta de muebles
-                                innovadores haciendo frente al mercado cambiante y competitivo, en pro
-                                de generar crecimiento económico en el país y nuestros accionistas.</p>
-                        </div>
-
+                <!-- Contenido -->
+                <div class="lg:w-1/2 w-full space-y-8" data-aos="fade-left">
+                    <div>
+                        <h3 class="font-dreams text-3xl font-semibold text-[#333333] mb-4">Habitek Studio</h3>
+                        <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                            Nacidos en Chiquinquirá, Boyacá, somos una empresa colombiana dedicada a transformar
+                            espacios a través de muebles modulares de alta calidad, disponibles en todo el territorio
+                            nacional.
+                        </p>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            Nos enorgullece ofrecer los mejores precios del mercado gracias a nuestra sólida red de
+                            proveedores directos en Asia, Europa y América, garantizando estándares de calidad
+                            internacional sin intermediarios.
+                        </p>
                     </div>
 
-                    <h3 class="title-font text-2xl font-semibold text-[#333333] mb-4">Valores Corporativos</h3>
-                    <div class="flex flex-wrap gap-4">
-                        <div class="flex items-center bg-white px-3 py-2 rounded-full shadow-sm">
-                            <i class="fas fa-check-circle text-[#333333] mr-2"></i>
-                            <span class="text-[#333333]">Integridad: Conservar altos estándares de principios éticos y
-                                morales para irradiar honestidad y fiabilidad en nuestros relaciones.</span>
-                        </div>
-                        <div class="flex items-center bg-white px-3 py-2 rounded-full shadow-sm">
-                            <i class="fas fa-check-circle text-[#333333] mr-2"></i>
-                            <span class="text-[#333333]">Trabajo en Equipo: Integramos habilidades y
-                                conocimientos con el fin de construir bases firmes en las relaciones
-                                interpersonales.</span>
-                        </div>
-                        <div class="flex items-center bg-white px-3 py-2 rounded-full shadow-sm">
-                            <i class="fas fa-check-circle text-[#333333] mr-2"></i>
-                            <span class="text-[#333333]">Calidad: Colocamos nuestro mayor esfuerzo y
-                                dedicación para superar siempre las expectativas de nuestros clientes.</span>
+                    <!-- Misión y Visión (Grid) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div
+                            class="bg-[#F8F5F2] p-6 rounded-xl border border-white shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex items-center gap-3 mb-3 text-[#856146]">
+                                <i class="fas fa-bullseye text-2xl"></i>
+                                <h4 class="font-dreams text-xl text-[#333333] m-0">Misión</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Brindar soluciones integrales en mobiliario modular, superando las expectativas en
+                                precio, calidad, cumplimiento y agilidad en cada entrega.
+                            </p>
                         </div>
 
+                        <div
+                            class="bg-[#F8F5F2] p-6 rounded-xl border border-white shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex items-center gap-3 mb-3 text-[#856146]">
+                                <i class="fas fa-eye text-2xl"></i>
+                                <h4 class="font-dreams text-xl text-[#333333] m-0">Visión</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Para 2030, ser líderes a nivel latinoamericano y marca pionera en muebles innovadores,
+                                generando crecimiento económico y marcando tendencia en el diseño.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Valores -->
+                    <div>
+                        <h3 class="font-dreams text-2xl text-[#333333] mb-4">Nuestros Valores</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="inline-flex items-center gap-2 bg-white border border-[#856146]/20 px-4 py-2 rounded-full text-gray-700 shadow-sm hover:bg-[#856146] hover:text-white transition-colors cursor-default">
+                                <i class="fas fa-shield-halved"></i> Integridad
+                            </span>
+                            <span
+                                class="inline-flex items-center gap-2 bg-white border border-[#856146]/20 px-4 py-2 rounded-full text-gray-700 shadow-sm hover:bg-[#856146] hover:text-white transition-colors cursor-default">
+                                <i class="fas fa-users"></i> Trabajo en Equipo
+                            </span>
+                            <span
+                                class="inline-flex items-center gap-2 bg-white border border-[#856146]/20 px-4 py-2 rounded-full text-gray-700 shadow-sm hover:bg-[#856146] hover:text-white transition-colors cursor-default">
+                                <i class="fas fa-gem"></i> Calidad Superior
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1764,314 +1794,297 @@
     </section>
 
     <!-- Sección de Servicios -->
-    <section id="servicios" class="py-20 bg-[#F7F5F2]">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="font-dreams text-3xl md:text-4xl mb-4">¿Cómo envían mi pedido?</h2>
-                <div class="w-24 h-1 bg-[#856146] mx-auto"></div>
+    <section id="servicios" class="py-24 bg-[#F8F5F2] relative overflow-hidden">
+        <!-- Decoración de fondo opcional -->
+        <div
+            class="absolute top-0 right-0 w-64 h-64 bg-[#856146] opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-96 h-96 bg-[#2F4C45] opacity-5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-dreams text-4xl md:text-5xl mb-4 text-[#2F4C45]">¿Cómo envían mi pedido?</h2>
+                <div class="w-24 h-1 bg-[#856146] mx-auto rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Servicio 1 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300">
-                    <div class="text-[#856146] text-4xl mb-6">
-                        <i class="fas fa-truck-arrow-right"></i>
+                <div class="service-card group bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="w-16 h-16 bg-[#F8F5F2] rounded-full flex items-center justify-center text-[#856146] text-2xl mb-8 group-hover:bg-[#856146] group-hover:text-white transition-colors duration-500">
+                        <i class="fas fa-truck-fast"></i>
                     </div>
-                    <h3 class="font-dreams text-2xl mb-4">¿Cuando despachan mi pedido?</h3>
-                    <p class="text-gray-700 mb-4">Hacemos el mejor esfuerzo para despachar
-                        sus pedidos lo más pronto posible, de tal manera que tratamos de enviar
-                        los productos el mismo día del pago, siempre y cuando el pago de su orden
-                        sea confirmado hasta las 4:00PM de lunes a viernes, y hasta las 11:00 AM los
-                        días sábados. Los pedidos pagados los días Festivos serán despachados al siguiente
-                        día hábil. Una vez realizado el enví­o se enviará, en el transcurso del día, el número
-                        de guí­a y la empresa transportadora.</p>
-                    <a href="#contacto"
-                        class="text-[#856146] hover:text-[#333333] font-medium transition duration-300 inline-flex items-center">
-                        Más información <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <h3 class="font-dreams text-2xl mb-4 text-[#333333]">¿Cuándo despachan mi pedido?</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Hacemos el mejor esfuerzo para despachar sus pedidos lo más pronto posible. Tratamos de enviar
+                        los productos el <strong>mismo día</strong> si el pago se confirma antes de las 4:00 PM (L-V) o
+                        11:00 AM (Sábados).
+                    </p>
                 </div>
 
                 <!-- Servicio 2 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300">
-                    <div class="text-[#856146] text-4xl mb-6">
+                <div class="service-card group bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="w-16 h-16 bg-[#F8F5F2] rounded-full flex items-center justify-center text-[#856146] text-2xl mb-8 group-hover:bg-[#856146] group-hover:text-white transition-colors duration-500">
                         <i class="fas fa-clock"></i>
                     </div>
-                    <h3 class="font-dreams text-2xl mb-4">¿Cuánto tiempo se demora en llegar a mi destino?</h3>
-                    <p class="text-gray-700 mb-4">Los tiempos de transito pueden variar dependiendo al destino,
-                        para Bogotá y Cundinamarca el transito normalmente es de 1 día, para ciudades principales
-                        como Medellín, Cali, Pereira, Bucaramanga, entre otras, el transito es de 1 a 2 días hábiles,
-                        para municipios que se encuentran apartados de las ciudades principales, o también denominados
-                        trayectos especiales, el transito puede oscilar entre 3 a 6 días hábiles. Tenga en cuenta que
-                        los posibles retrasos o eventualidades con su pedido será responsabilidad directa de la empresa
-                        de mensajería, y que Elkin Daniel podrá colaborar con la solución de estos impases, pero no se
-                        hace responsable por problemáticas ocasionadas por la empresa transportadora o por el comprador.
+                    <h3 class="font-dreams text-2xl mb-4 text-[#333333]">Tiempos de tránsito</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Bogotá y Cundinamarca: <strong>1 día hábil</strong>. <br>
+                        Ciudades principales (Medellín, Cali, etc.): <strong>1 a 2 días hábiles</strong>. <br>
+                        Trayectos especiales o apartados: <strong>3 a 6 días hábiles</strong>.
                     </p>
-                    <a href="#contacto"
-                        class="text-[#856146] hover:text-[#333333] font-medium transition duration-300 inline-flex items-center">
-                        Más información <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
                 </div>
 
                 <!-- Servicio 3 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300">
-                    <div class="text-[#856146] text-4xl mb-6">
-                        <i class="fas fa-location-dot"></i>
+                <div class="service-card group bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="w-16 h-16 bg-[#F8F5F2] rounded-full flex items-center justify-center text-[#856146] text-2xl mb-8 group-hover:bg-[#856146] group-hover:text-white transition-colors duration-500">
+                        <i class="fas fa-store"></i>
                     </div>
-                    <h3 class="font-dreams text-2xl mb-4">¿Puedo recoger mi pedido personalmente?</h3>
-                    <p class="text-gray-700 mb-4">La entrega personal de su pedido se puede hacer si se
-                        realiza en la ciudad de Chiquinquirà para tal caso se puede acordar una cita previa
-                        comunicándose a habitekstudio@gmail.com o llamando a las líneas telefónicas de atención al
-                        cliente.</p>
-                    <a href="#contacto"
-                        class="text-[#856146] hover:text-[#333333] font-medium transition duration-300 inline-flex items-center">
-                        Más información <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <h3 class="font-dreams text-2xl mb-4 text-[#333333]">¿Recogida personal?</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Sí, entregamos personalmente en <strong>Chiquinquirá</strong>. <br>
+                        Contáctanos para agendar una cita previa a través de nuestros canales de atención o correo
+                        electrónico.
+                    </p>
                 </div>
-
-
             </div>
         </div>
     </section>
 
     <!-- Pagos Section -->
-    <section id="pagos" class="py-16 md:py-24 bg-[#F7F5F2]">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="title-font text-3xl md:text-4xl font-bold text-[#333333] mb-4">¿Cómo pagar?</h2>
-                <p class="text-lg text-[#333333] max-w-2xl mx-auto">A continuación se mencionan las diferentes
-                    formas de pago para la empresa Habitek Studio, cada forma de pago está sujeta a las condiciones
-                    en este mismo artículo</p>
-                <div class="w-20 h-1 bg-[#856146] mx-auto"></div>
+    <section id="pagos" class="py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-dreams text-4xl md:text-5xl font-bold text-[#2F4C45] mb-4">¿Cómo pagar?</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Selecciona la opción que mejor se adapte a ti. Haz
+                    clic para ver los detalles y condiciones de cada método de pago.</p>
+                <div class="w-20 h-1 bg-[#856146] mx-auto mt-6 rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Article 1 -->
-                <div class="blog-card bg-white rounded-lg overflow-hidden shadow-md"
-                    style="opacity: 1; transform: translateY(0px);">
-                    <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                        alt="Cuidado de melamina" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-[#333333] mb-3">
-                            <i class="far fa-calendar-alt text-[#856146] mr-2"></i>
-                            <span>01 Enero 2026</span>
+            <div class="space-y-4" data-aos="fade-up" data-aos-delay="200">
+                <!-- Accordion Item 1 -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-hand-holding-dollar text-2xl text-[#856146]"></i>
+                            <h3 class="font-dreams text-xl text-[#333333] m-0">Pago a Contra Entrega (Chiquinquirá)</h3>
                         </div>
-                        <h3 class="title-font text-xl font-semibold text-[#333333] mb-3">Pago a CONTRA ENTREGA
-                            (Chiquinquirá).</h3>
-                        <p class="text-[#333333] mb-4">Para acordar este medio de pago debe realizar la orden por
-                            nuestra página web y en FORMAS DE ENTREGA seleccionar domicilio Chiquinquirá,
-                            posteriormente, en el Ítem 3 llamado ELIJA SU MODO DE PAGO seleccionar Pago a Contra
-                            entrega.
-                            Es importante recordar que este servicio solo está habilitado para Chiquinquirá y sus
-                            alrededores
-                            Por favor confirmar su orden por Whatsapp al número +57 311 512 06 52 facilitando su correo
-                            electrónico
-                            para agilizar el proceso de envió
-                        </p>
-
+                        <i class="fas fa-chevron-down text-[#856146] transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#F8F5F2]">
+                        <div class="p-6 text-gray-700 leading-relaxed border-t border-gray-200">
+                            Para acordar este medio de pago, realiza la orden en nuestra web. En <strong>FORMAS DE
+                                ENTREGA</strong> selecciona domicilio Chiquinquirá y en <strong>MODO DE PAGO</strong>
+                            elige Pago a Contra Entrega.<br><br>
+                            <em>Nota: Este servicio solo está habilitado para Chiquinquirá y sus alrededores.</em><br>
+                            Por favor confirma tu orden por WhatsApp al número <strong>+57 311 512 06 52</strong>
+                            facilitando tu correo para agilizar el envío.
+                        </div>
                     </div>
                 </div>
 
-                <!-- Article 2 -->
-                <div class="blog-card bg-white rounded-lg overflow-hidden shadow-md"
-                    style="opacity: 1; transform: translateY(0px);">
-
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-[#333333] mb-3">
-                            <i class="far fa-calendar-alt text-[#856146] mr-2"></i>
-                            <span>01 Enero 2026</span>
+                <!-- Accordion Item 2 -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-building-columns text-2xl text-[#856146]"></i>
+                            <h3 class="font-dreams text-xl text-[#333333] m-0">Consignación o Transferencia Bancaria
+                                (Bancolombia)</h3>
                         </div>
-                        <h3 class="title-font text-xl font-semibold text-[#333333] mb-3">Consignación o Transferencia
-                            Bancaria</h3>
-                        <h4 class="text-sm font-semibold text-[#333333] mb-2">Bancolombia</h4>
-                        <p class="text-[#333333] mb-4">El pago por Bancolombia es gratuito si y solo sí­ se realiza una
-                            transferencia electrónica a través de uncajero electrónico, la Sucursal Virtual, o la APP de
-                            Bancolombia (La APP solo está disponible para la cuenta de ahorros a nombre de Elkin Daniel
-                            Silva o si
-                            se realiza una consignación dentro del departamento de Boyacá ,o sí la consignación es igual
-                            o superior a $370.000, si se realiza una consignación fuera del departamento de Boyacá,
-                            Bancolombia cobrará una comisión de $11.500 la cual deberá ser asumida por el comprador. SI
-                            SU COMPRA SUPERA LOS $370.000 NO ES NECESARIO PAGAR LA COMISIÓN DE BANCOLOMBIA POR
-                            CONSIGNACIÓN
-                            Los datos de las cuentas son:
-                            Titular: Elkin Daniel Silva Laiton (Cuenta compatible con la APP de Bancolombia, para hacer
-                            transferencias
-                            a cuentas no inscritas)
-                            Cuenta de Ahorros: 260-123456-98
-                            Cédula:10053349332
-                            Cuenta Corriente: 260-356482-95
-                            Titular: HabitekStudio SAS
-                            NIT: 98 000 045
-                            Cuenta de ahorros: 264-245689-94
-                            Titular: HabitekStudio SAS
-                            NIT: 90 000 985
-                            Para realizar el enví­o de los productos comprados, se debe enviar el comprobante de pago al
-                            correo habitekstudio@gmail.com , si no se enví­a el comprobante de pago, Habitek Studio SAS
-                            asumirá que
-                            el pago aún no se ha efectuado y por tal razón no realizará el enví­o de los productos.
-                        </p>
-
+                        <i class="fas fa-chevron-down text-[#856146] transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#F8F5F2]">
+                        <div class="p-6 text-gray-700 leading-relaxed border-t border-gray-200">
+                            El pago es gratuito si realizas transferencia vía App, Sucursal Virtual o cajero electrónico
+                            (dentro de Boyacá o compras mayores a $370,000). Consignaciones fuera de Boyacá menores a
+                            este monto tienen comisión de $11,500 asumida por el comprador.
+                            <div class="mt-4 p-4 bg-white rounded-lg border border-gray-200">
+                                <strong>Titular:</strong> Elkin Daniel Silva Laiton<br>
+                                <strong>Cédula:</strong> 10053349332<br>
+                                <strong>Cuenta de Ahorros:</strong> 260-123456-98<br>
+                                <strong>Cuenta Corriente:</strong> 260-356482-95<br>
+                                <hr class="my-2 border-gray-200">
+                                <strong>Titular:</strong> HabitekStudio SAS (NIT: 90 000 985)<br>
+                                <strong>Cuenta de Ahorros:</strong> 264-245689-94
+                            </div>
+                            <p class="mt-4 text-sm text-gray-500 italic">Envía el comprobante a habitekstudio@gmail.com
+                                para despachar tu pedido.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Article 3 -->
-                <div class="blog-card bg-white rounded-lg overflow-hidden shadow-md"
-                    style="opacity: 1; transform: translateY(0px);">
-                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=80"
-                        alt="Tendencias en diseño" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-[#333333] mb-3">
-                            <i class="far fa-calendar-alt text-[#856146] mr-2"></i>
-                            <span>01 Enero 2026</span>
+                <!-- Accordion Item 3 -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-money-bill-transfer text-2xl text-[#856146]"></i>
+                            <h3 class="font-dreams text-xl text-[#333333] m-0">Giro vía EFECTY</h3>
                         </div>
-                        <h3 class="title-font text-xl font-semibold text-[#333333] mb-3">EFECTY</h3>
-                        <p class="text-[#333333] mb-4">Para realizar el pago por EFECTY tiene que tener en cuenta que la
-                            comisión debe ser asumida por usted, el comprador, los cargos por el giro pueden variar
-                            dependiendo a la suma pagada y a la empresa en donde se efectué el pago. SI SU COMPRA SUPERA
-                            LOS $100.000 NO ES NECESARIO PAGAR LA COMISIÓN DE EFECTY
-                            Girar a nombre de: Daniel Silva
-                            Cédula: 1053349332
-                            Chiquinquirá Boyacá
-                            Para realizar el enví­o de los productos comprados, se debe enviar el comprobante de pago al
-                            correo habitekstudio@gmail.com , si no se enví­a el comprobante de pago, Habitek Studio SAS
-                            asumirá que
-                            el pago aún no se ha efectuado y por tal razón no realizará el enví­o de los productos.
-                        </p>
-
+                        <i class="fas fa-chevron-down text-[#856146] transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#F8F5F2]">
+                        <div class="p-6 text-gray-700 leading-relaxed border-t border-gray-200">
+                            La comisión del giro debe ser asumida por el comprador. Sin embargo, <strong>si tu compra
+                                supera los $100,000 COP, no es necesario pagar la comisión</strong>.<br><br>
+                            <strong>Girar a nombre de:</strong> Daniel Silva<br>
+                            <strong>Cédula:</strong> 1053349332<br>
+                            <strong>Destino:</strong> Chiquinquirá, Boyacá<br><br>
+                            <p class="text-sm text-gray-500 italic">Recuerda enviar el comprobante de giro a
+                                habitekstudio@gmail.com para procesar el envío.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- devouciones Section -->
-    <section id="devolucion" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="title-font text-3xl md:text-4xl font-bold text-[#333333] mb-4">Devoluciones
-                </h2>
-                <div class="w-20 h-1 bg-[#856146] mx-auto"></div>
+    <!-- Devoluciones Section -->
+    <section id="devolucion" class="py-24 bg-[#F8F5F2] relative overflow-hidden">
+        <!-- Decoración de fondo opcional -->
+        <div
+            class="absolute top-0 left-0 w-72 h-72 bg-[#856146] opacity-5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/3">
+        </div>
+
+        <div class="container mx-auto px-4 max-w-4xl relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-dreams text-4xl md:text-5xl font-bold text-[#2F4C45] mb-4">Políticas de Devolución</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Queremos que estés 100% satisfecho con tu compra.
+                    Conoce cómo procedemos en caso de cambios o devoluciones.</p>
+                <div class="w-20 h-1 bg-[#856146] mx-auto mt-6 rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Devoluciones 1 -->
-                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
-
-                    <h3 class="font-dreams text-2xl mb-4">Nuestra garantía contigo</h3>
-                    <p class="text-[#0A0B0A] mb-4">"Nuestra garantía de satisfacción es incondicional. Si crees que los
-                        productos adquiridos en nuestro sitio web no se ajustan a tus necesidades (sujetos a un desgaste
-                        normal), devuelve tu pedido y recibirás un reembolso."</p>
-                    <p class="text-[#0A0B0A] mb-4">Para que estés satisfecho al 100%, puedes devolver las compras
-                        realizadas en Habitek Studio SAS en un plazo de 30 días. Todos los paquetes de devolución
-                        deberán
-                        enviarse con nuestro proveedor logístico (Servientrega).</p>
-
+            <div class="space-y-4" data-aos="fade-up" data-aos-delay="200">
+                <!-- Accordion 1 -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <h3 class="font-dreams text-xl text-[#333333] m-0">Nuestra garantía contigo</h3>
+                        <i class="fas fa-chevron-down text-[#856146] transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#F8F5F2]">
+                        <div class="p-6 text-gray-700 leading-relaxed border-t border-gray-200">
+                            Nuestra garantía de satisfacción es incondicional. Si crees que los productos adquiridos en
+                            nuestro sitio web no se ajustan a tus necesidades (sujetos a un desgaste normal), devuelve
+                            tu pedido y recibirás un reembolso. Para que estés satisfecho al 100%, puedes devolver las
+                            compras en un plazo de 30 días. Todos los paquetes deberán enviarse con nuestro proveedor
+                            logístico.
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Devoluciones 2 -->
-                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
-
-                    <h3 class="font-dreams text-2xl mb-4">¿Qué se puede devolver?
-                    </h3>
-                    <p class="text-[#0A0B0A] mb-4">"Una vez entregados todos nuestros productos se pueden devolver
-                        siempre que el embalaje no haya sido abierto y esté en perfectas condiciones. En el caso que el
-                        producto se reciba en malas condiciones o con desperfectos visibles en el embalaje el mismo
-                        deberá ser rechazado y devuelto al mismo transportar que le intenta hacer la entrega del mismo.
-                        La aceptación de un producto en malas condiciones sólo podrá ser motivo de devolución mientras
-                        haya una comunicación por escrito por parte de nuestro distribuidor."</p>
-                    <p class="text-[#0A0B0A] mb-4">En el caso que vaya a aceptar un producto con el embalaje damnificado
-                        deberá hacer constancia de los daños del embalaje en el albarán de entrega. Es muy importante
-                        instruir al personal de su empresa o centro educativo al respecto una vez haya realizado su
-                        pedido en nuestra tienda online.</p>
-
+                <!-- Accordion 2 -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <h3 class="font-dreams text-xl text-[#333333] m-0">¿Qué se puede devolver?</h3>
+                        <i class="fas fa-chevron-down text-[#856146] transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#F8F5F2]">
+                        <div class="p-6 text-gray-700 leading-relaxed border-t border-gray-200">
+                            Una vez entregados, todos nuestros productos se pueden devolver siempre que el embalaje no
+                            haya sido abierto y esté en perfectas condiciones. Si se recibe en malas condiciones o con
+                            desperfectos visibles en el embalaje, deberá ser rechazado y devuelto al mismo
+                            transportador. La aceptación de un producto en malas condiciones sólo podrá ser motivo de
+                            devolución si hay comunicación por escrito por parte de nuestro distribuidor.
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Devoluciones 3 -->
-                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
-
-                    <h3 class="font-dreams text-2xl mb-4">Los productos devueltos en malas condiciones
-                    </h3>
-                    <p class="text-[#0A0B0A] mb-4">"No se aceptan las devoluciones de productos sin el embalaje
-                        original. En el caso que sea necesario podrán ser adquiridos embalajes de fábrica para la
-                        devolución de los productos."</p>
-
-
+                <!-- Accordion 3 -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <h3 class="font-dreams text-xl text-[#333333] m-0">Productos en malas condiciones</h3>
+                        <i class="fas fa-chevron-down text-[#856146] transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#F8F5F2]">
+                        <div class="p-6 text-gray-700 leading-relaxed border-t border-gray-200">
+                            No se aceptan devoluciones de productos sin el embalaje original. En el caso de que sea
+                            necesario, podrán ser adquiridos embalajes de fábrica para la devolución de los productos.
+                        </div>
+                    </div>
                 </div>
-                <!-- Devoluciones 4 -->
-                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
 
-                    <h3 class="font-dreams text-2xl mb-4">Importe del reembolso
-                    </h3>
-                    <p class="text-[#0A0B0A] mb-4">"Una vez recibido el producto devuelto con el embalaje original
-                        intacto y en perfectas condiciones se podrecerá a la devolución del importe íntegro de la compra
-                        incluyendo los impuestos, pero deducido de los portes de devolución en caso de que los mismos no
-                        hayan sido abonados por el cliente. No se cobrará ningún tipo de recargo por la devolución."</p>
-
-
+                <!-- Accordion 4 -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <h3 class="font-dreams text-xl text-[#333333] m-0">Importe y medios de reembolso</h3>
+                        <i class="fas fa-chevron-down text-[#856146] transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#F8F5F2]">
+                        <div class="p-6 text-gray-700 leading-relaxed border-t border-gray-200">
+                            Una vez recibido el producto devuelto con el embalaje original intacto, se procederá a la
+                            devolución del importe íntegro (incluyendo impuestos), deducido de los portes de devolución
+                            (si no fueron abonados por el cliente). No hay recargos adicionales. Las devoluciones se
+                            harán por transferencia bancaria en un plazo máximo de 60 días tras recibir la mercancía.
+                        </div>
+                    </div>
                 </div>
-                <!-- Devoluciones 5 -->
-                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
 
-                    <h3 class="font-dreams text-2xl mb-4">Medios de pago
-                    </h3>
-                    <p class="text-[#0A0B0A] mb-4">"Las devoluciones se harán por transferencia bancaria a la cuenta
-                        bancaria de la entidad facturada por la venta y en un plazo máximo de 60 días tras recibir la
-                        mercancía devuelta."</p>
-
-
+                <!-- Accordion 5 -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <h3 class="font-dreams text-xl text-[#333333] m-0">Plazos y lugar de envío</h3>
+                        <i class="fas fa-chevron-down text-[#856146] transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#F8F5F2]">
+                        <div class="p-6 text-gray-700 leading-relaxed border-t border-gray-200">
+                            El plazo de devolución es de 15 días naturales tras la compra. Se podrá ampliar mediante
+                            solicitud escrita antes de la compra. La dirección para la devolución será comunicada al
+                            momento de la solicitud, ya que puede variar según su zona geográfica.
+                        </div>
+                    </div>
                 </div>
-                <!-- Devoluciones 6 -->
-                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
 
-                    <h3 class="font-dreams text-2xl mb-4">Plazo para la devolución
-                    </h3>
-                    <p class="text-[#0A0B0A] mb-4">"El plazo de devolución de un articulo adquirido es de 15 días
-                        naturales tras la compra del mismo. Se podrá ampliar dicho plazo mediante una solicitud y
-                        aceptación por escrito por parte de la empresa, la cual deberá ser solicitada antes de la
-                        compra."</p>
-
-
-                </div>
-                <!-- Devoluciones 7 -->
-                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
-
-                    <h3 class="font-dreams text-2xl mb-4">¿Dónde hay que enviar la devolución?
-                    </h3>
-                    <p class="text-[#0A0B0A] mb-4">"La dirección para devolución de los productos será comunicada en el
-                        momento de la solicitud de la misma. La misma puede variar en función de su zona geográfica."
-                    </p>
-
-
-                </div>
-                <!-- Devoluciones 8 -->
-                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
-
-                    <h3 class="font-dreams text-2xl mb-4">¿Qué hay de los cambios?
-                    </h3>
-                    <p class="text-[#0A0B0A] mb-4">"Una vez adquirido un producto el cliente puede solicitar el cambio
-                        del mismo siempre que el embalaje original esté intacto. En las compras por un valor inferior no
-                        se abonará la diferencia en caso de cambio, sin embargo dicha diferencia podrá ser compensada
-                        con un crédito o descuento que se hará por el mismo importe en la compra siguiente."
-                    </p>
-
-
-                </div>
-                <!-- Devoluciones 9 -->
-                <div class="testimonial-card bg-[#F8F5F2] p-6 rounded-lg">
-
-                    <h3 class="font-dreams text-2xl mb-4">Situaciones especiales:
-                    </h3>
-                    <h4 class="font-medium text-lg mb-4">Rebajas</h4>
-                    <p class="text-[#0A0B0A] mb-4">"En los períodos de rebajas o descuentos y ofertas especiales se
-                        aplican las mismas condiciones de devolución, excepto que se indique lo contrario en la propia
-                        oferta."
-                    </p>
-                    <h4 class="font-medium text-lg mb-4">Fuera de plazo</h4>
-                    <p class="text-[#0A0B0A] mb-4">"No se procederá al reembolso de los artículos devueltos que lleguen
-                        fuera de plazo. En el caso que sea necesario podrá solicitar la ampliación de plazo de
-                        devolución antes de realizar su compra."
-                    </p>
-
+                <!-- Accordion 6 -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                        onclick="toggleAccordion(this)">
+                        <h3 class="font-dreams text-xl text-[#333333] m-0">Cambios y situaciones especiales</h3>
+                        <i class="fas fa-chevron-down text-[#856146] transition-transform duration-300"></i>
+                    </button>
+                    <div
+                        class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#F8F5F2]">
+                        <div class="p-6 text-gray-700 leading-relaxed border-t border-gray-200">
+                            <strong>Cambios:</strong> El cliente puede solicitar un cambio siempre que el embalaje esté
+                            intacto. En compras de menor valor, la diferencia se compensará con un crédito o descuento
+                            para su próxima compra.<br><br>
+                            <strong>Rebajas:</strong> Se aplican las mismas condiciones, salvo indicación contraria en
+                            la oferta.<br><br>
+                            <strong>Fuera de plazo:</strong> No se reembolsarán artículos que lleguen fuera de plazo. Si
+                            lo requiere, solicite la ampliación del plazo de devolución antes de comprar.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2173,6 +2186,63 @@
         </div>
 
 
+    </section>
+
+    <!-- Ubicación -->
+    <section id="ubicacion" class="py-20 bg-[#F7F5F2]">
+        <div class="container mx-auto px-6">
+
+            <!-- Título -->
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#333333] mb-4">
+                    Nuestra Ubicación
+                </h2>
+                <p class="text-[#856146]">
+                    Visítanos o agenda tu cita para asesoría personalizada
+                </p>
+            </div>
+
+            <!-- Contenido -->
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+
+                <!-- Información -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-[#333333] mb-4">
+                        Habitek Studio
+                    </h3>
+
+                    <p class="mb-3 text-[#333333]">
+                        📍 Dirección: Calle 19A #16A-32, Chiquinquirà, Boyacá
+                    </p>
+
+                    <p class="mb-3 text-[#333333]">
+                        📞 Teléfono: +57 311 512 0652
+                    </p>
+
+                    <p class="mb-6 text-[#333333]">
+                        🕒 Horario: Lunes a Viernes de 9:00 AM a 6:00 PM,
+                        Sabado de 10:00 AM a 2:00 PM
+
+                    </p>
+
+                    <a href="https://maps.app.goo.gl/Ak2pUiDf13jHZQVm9" target="_blank"
+                        class=" btn-primary inline-block  text-white px-6 py-3 rounded-lg hover:bg-[#856146] transition">
+                        Ver en Google Maps
+                    </a>
+                </div>
+
+                <!-- Mapa -->
+                <div class="w-full h-[400px] rounded-lg overflow-hidden shadow-lg">
+
+
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.6182792403683!2d-73.82105328945967!3d5.623237994334273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e41c9ca7f14aa57%3A0x524507466e76516d!2sCl.%2019a%20%23%2016A-32%2C%20Chiquinquir%C3%A1%2C%20Boyac%C3%A1!5e0!3m2!1sen!2sco!4v1777674801407!5m2!1sen!2sco"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+        </div>
     </section>
 
     <!-- Pie de página -->
@@ -2346,50 +2416,6 @@
     -->
 
     <!-- SCRIPT -->
-    <script>
-        // =========================
-        // DROPDOWN DESKTOP
-        // =========================
-        const dropdownBtn = document.getElementById("dropdownButton");
-        const dropdownMenu = document.getElementById("dropdownMenu");
-
-        dropdownBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            dropdownMenu.classList.toggle("opacity-0");
-            dropdownMenu.classList.toggle("invisible");
-            dropdownMenu.classList.toggle("scale-95");
-        });
-
-        document.addEventListener("click", (e) => {
-            if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                dropdownMenu.classList.add("opacity-0", "invisible", "scale-95");
-            }
-        });
-
-        // =========================
-        // MENÚ MOBILE
-        // =========================
-        const mobileBtn = document.getElementById("mobileMenuBtn");
-        const mobileMenu = document.getElementById("mobileMenu");
-
-        mobileBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-        });
-
-        // =========================
-        // DROPDOWN MOBILE
-        // =========================
-        const mobileDropdownBtn = document.getElementById("mobileDropdownBtn");
-        const mobileDropdown = document.getElementById("mobileDropdown");
-        const arrow = document.getElementById("arrow");
-
-        mobileDropdownBtn.addEventListener("click", () => {
-            mobileDropdown.classList.toggle("hidden");
-            arrow.classList.toggle("rotate-180");
-        });
-
-
-    </script>
     <!--
     // =========================
     // CARRITO
@@ -2430,22 +2456,7 @@
         // Initialize filter to show all products
         document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
 
-        // Scroll reveal animation
-        window.addEventListener('scroll', revealOnScroll);
-
-        function revealOnScroll() {
-            const elements = document.querySelectorAll('.product-card, .blog-card, .testimonial-card');
-
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-
-                if (elementPosition < windowHeight - 100) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        }
+        // Note: Old revealOnScroll removed because it conflicted with AOS
     </script>
 
     <!--
@@ -2475,10 +2486,129 @@
             index = (index - 1 + slides.length) % slides.length;
             slides[index].classList.remove("hidden");
         }
+        <script src="carrito.js"></script>
+
+    <!-- Stock Badge Styles -->
+    <style>
+        .stock-badge {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .stock-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .btn-add-cart {
+            transition: all 0.3s ease !important;
+        }
+
+        .btn-add-cart:disabled {
+            opacity: 0.5 !important;
+            cursor: not-allowed !important;
+            background-color: #999 !important;
+        }
+
+        .cart-item-card {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <!-- Auto-enhance product cards with stock badges -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Find all buttons that call addToCart
+            document.querySelectorAll('.product-card .p-6').forEach(infoDiv => {
+                const btn = infoDiv.querySelector('button[onclick*="addToCart"]');
+                if (!btn) return;
+
+                // Extract product name from onclick attribute
+                const onclickStr = btn.getAttribute('onclick');
+                const match = onclickStr.match(/addToCart\('([^']+)'/);
+                if (!match) return;
+
+                const productName = match[1];
+
+                // Add class and data-product attribute to the button
+                btn.classList.add('btn-add-cart');
+                btn.setAttribute('data-product', productName);
+
+                // Create stock badge row and insert before the button
+                const stockRow = document.createElement('div');
+                stockRow.className = 'stock-info-row';
+                stockRow.innerHTML = `
+                    <span class="stock-badge text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-700" 
+                          data-product="${productName}">
+                        Stock: --
+                    </span>
+                    <span class="text-xs text-gray-500">Disponible</span>
+                `;
+                btn.parentElement.insertBefore(stockRow, btn);
+            });
+
+        // Now trigger the stock update
+        if (typeof updateStockBadges === 'function') {
+            updateStockBadges();
+            }
+        });
+
+        // Accordion Logic
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+        const icon = btn.querySelector('i');
+
+            // Close all others (optional)
+            document.querySelectorAll('.accordion-content').forEach(c => {
+                if(c !== content) {
+            c.style.maxHeight = null;
+        c.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                }
+            });
+
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        icon.classList.remove('rotate-180');
+            } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        icon.classList.add('rotate-180');
+            }
+        }
     </script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Apply AOS attributes dynamically to all product cards for an elegant cascading effect
+        document.querySelectorAll('.product-card, .blog-card, .testimonial-card').forEach((card, index) => {
+            // Very important: wipe out hardcoded styles that block AOS
+            card.style.opacity = '';
+        card.style.transform = '';
 
+        if(!card.hasAttribute('data-aos')) {
+            card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('data-aos-delay', (index % 3) * 100);
+            }
+        });
 
-
-</body>
+        AOS.init({
+            duration: 800,
+        once: true,
+        offset: 100
+        });
+    </script>
 
 </html>
